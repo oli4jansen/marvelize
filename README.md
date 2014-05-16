@@ -1,1 +1,3 @@
-# YO
+# MarvelBrowser
+
+Best docs ever.
