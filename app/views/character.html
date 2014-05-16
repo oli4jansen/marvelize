@@ -3,13 +3,13 @@
 </div>
 
 <div class="text-image-view medium" ng-if="characterData.description.length > 0">
-	<div class="half"><h1>About {{characterData.name}}</h1><p>"{{characterData.description}}"</p></div><p class="half">
+	<div class="half"><h1>About {{characterData.name}}</h1><p>"{{characterData.description}}"</p></div><p class="half image">
 		<i class="ion-ios7-person-outline huge center"></i>
 	</p>
 </div>
 
 <div class="text-image-view medium" ng-if="characterData.comics.available > 0">
-	<p class="half">
+	<p class="half image">
 		<i class="ion-ios7-bookmarks-outline huge center"></i>
 	</p><div class="half"><h1>Appeared in {{characterData.comics.available}} comics</h1><p ng-if="characterData.comics.items.length > 0">Including <span ng-repeat="comic in characterShortComicList"><a href="{{comic.resourceURI}}">{{comic.name}}</a>, </span>and more.<br>
 	<a href="#" class="button next right">See all</a></p></div>

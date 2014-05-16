@@ -244,6 +244,8 @@ list-item, list-item * {
 		top: 50%;
 		margin-top: -20px;
 		left: 0;
+		height: 50px;
+		overflow: hidden;
 		color: #fff;
 		width: 100%;
 		text-align: center;
@@ -297,4 +299,51 @@ list-item:nth-child(even) .list-item-list { background-color: #fff; }
 .copyright {
 	opacity: .25;
 	padding: 25px 0;
+}
+
+/*
+MOBILE SHIZZLE
+*/
+
+@media (max-width: 600px) {
+	.menu {
+		padding: 20px 0px 0;
+		margin: 0 1%;
+		width: 98%;
+	}
+		.menu form, .menu input, .menu .search { width: 100%; }
+		.menu .search { margin-top: 15px; }
+
+	.view-holder {
+		margin: 0 1%;
+		padding: 10px 5px;
+	}
+
+	.text-image-view.medium {
+		padding: 15px 15px 10px;
+	}
+
+	.text-image-view .half {
+		display: block;
+		width: 100%;
+		vertical-align: top;
+		padding: 0 0 0 0 !important;
+	}
+	.text-image-view .half.image {
+		display: none;
+	}
+
+	.list-item-list img, .list-item-list-add img {
+		width: 100px;
+	}
+	.list-item-list h3, .list-item-list-add h3 {
+		font-size: 22px;
+		left: 115px;
+		display: inline-block;
+		overflow: hidden;
+		height: 50px;
+	}
+	.list-item-list p, .list-item-list-add p {
+		left: 115px;
+	}
 }
