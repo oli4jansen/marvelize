@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="css/ionicons.min.css"/>
 	<link rel="stylesheet" href="css/app.css"/>
 </head>
-<body>
+<body ng-class="{'cover': coverActive}">
 	
 	<ul class="menu" ng-controller="menuController">
 		<li class="left"><i class="ion-ios7-refresh-outline loading-indicator" ng-class="{'active': loading}"></i><a ng-click="home()">MarvelBrowser</a></li>

@@ -1,9 +1,11 @@
-app.controller("characterController", function($scope, $routeParams, APIDataFactory){
+app.controller("characterController", function($scope, $rootScope, $routeParams, APIDataFactory){
 
 	$scope.characterID = $routeParams.characterID;
 	$scope.characterData;
 
 	$scope.characterImage;
+
+	$rootScope.coverActive = true;
 
 	$scope.init = function() {
 		APIDataFactory.getCharacter($routeParams.characterID, function(error, result) {
