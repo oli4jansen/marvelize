@@ -1,0 +1,16 @@
+<div class="image-view large" style="background-image:url('{{characterImage}}');">
+	<h1 class="center bold">{{characterData.name}}</h1>
+</div>
+
+<div class="text-image-view medium" ng-if="characterData.description.length > 0">
+	<p class="half">"{{characterData.description}}"</p><p class="half">
+		<i class="ion-ios7-person-outline huge center"></i>
+	</p>
+</div>
+
+<div class="text-image-view medium" ng-if="characterData.comics.available > 0">
+	<p class="half">
+		<i class="ion-ios7-bookmarks-outline huge center"></i>
+	</p><div class="half"><h1>Appeared in <b>{{characterData.comics.available}}</b> comics</h1><p ng-if="characterData.comics.items.length > 0">Including <span ng-repeat="comic in characterShortComicList"><a href="{{comic.resourceURI}}">{{comic.name}}</a>, </span>and more.<br>
+	<a href="#" class="button next right">See all</a></p></div>
+</div>

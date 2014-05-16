@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MarvelBrowser">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Marvel by Olivier</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/ionicons.min.css"/>
+	<link rel="stylesheet" href="css/app.css"/>
+</head>
+<body>
+	
+	<ul class="menu" ng-controller="menuController">
+		<li class="left"><i class="ion-ios7-refresh-outline loading-indicator" ng-class="{'active': loading}"></i><a ng-click="home()">MarvelBrowser</a></li>
+		<li><a ng-click="navigate('comics')">Comics</a></li>
+		<li><a ng-click="navigate('characters')">Characters</a></li>
+		<li><form ng-submit="search()"><input type="search" ng-model="query" placeholder="Search.."></form></li>
+	</ul>
+
+	<div class="view-holder" ng-view ng-init="init()"></div>
+
+	<script type="text/javascript" src="libs/jquery.min.js"></script>
+
+	<script type="text/javascript" src="libs/angular.min.js"></script>
+	<script type="text/javascript" src="libs/angular-route.min.js"></script>
+	<script type="text/javascript" src="libs/angular-animate.min.js"></script>
+
+	<script type="text/javascript" src="app.js"></script>
+
+	<script type="text/javascript" src="app/controllers/menuController.js"></script>
+	<script type="text/javascript" src="app/controllers/indexController.js"></script>
+	<script type="text/javascript" src="app/controllers/searchController.js"></script>
+	
+	<script type="text/javascript" src="app/controllers/charactersController.js"></script>
+	<script type="text/javascript" src="app/controllers/characterController.js"></script>
+
+	<script type="text/javascript" src="app/controllers/comicsController.js"></script>
+
+	<script type="text/javascript" src="app/factories/APIDataFactory.js"></script>
+
+	<script type="text/javascript" src="app/directives/listViewDirective.js"></script>
+	<script type="text/javascript" src="app/directives/listItemDirective.js"></script>
+</body>
+</html>
