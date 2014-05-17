@@ -68,7 +68,7 @@ i.huge {   font-size: 150px; }
 .button {
 	display: inline-block;
 	padding: 5px 15px;
-	margin: 4px 5px;
+	margin: 10px 5px;
 	font-size: 13px;
 	border-radius: 100px;
 	border: 1px solid #F0141E;
@@ -218,10 +218,10 @@ list-item, list-item * {
 	display: inline-block;
 	position: relative;
 	cursor: pointer;
-	-webkit-transition: all linear .15s;
-	-moz-transition: all linear .15s;
-	-o-transition: all linear .15s;
-	transition: all linear .15s;
+	-webkit-transition: all easeInQuart .15s;
+	-moz-transition: all easeInQuart .15s;
+	-o-transition: all easeInQuart .15s;
+	transition: all easeInQuart .15s;
 }
 
 .ng-enter .list-item-inner { -webkit-transform: perspective(50em) rotateX(50deg); opacity: 0; }
@@ -271,13 +271,12 @@ list-item, list-item * {
 
 .list-item-list, .list-item-list-add {
 	width: 100%;
-	background-color: #F0141E;
+	background-color: #fff;
+	border-bottom: 1px solid #ced0d5;
 	-webkit-transition: background 0s;
 	transition: background 0s;
 }
-list-item:nth-child(odd) .list-item-list {  background-color: #eee; }
-list-item:nth-child(even) .list-item-list { background-color: #fff; }
-
+list-item:last-child .list-item-list { border-bottom: 0; }
 	.list-item-list img, .list-item-list-add img {
 		width: 200px;
 		padding: 0;

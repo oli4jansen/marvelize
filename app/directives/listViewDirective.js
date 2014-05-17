@@ -7,7 +7,7 @@ app.directive('listView', function() {
       '<span class="right">{{total}} items</span>'+
     '</div>';
 
-  var footer = '<p ng-if="$parent.loading" class="center"><br><i class="ion-ios7-reloading normal"></i><br><br>Asking Marvel for some data, please be patient..<br><br></p>';
+  var footer = '<p ng-if="$parent.loading" class="center"><br><i class="ion-loading-d normal"></i><br><br>Asking Marvel for some data, please be patient..<br><br></p>';
 
   return {
     restrict: 'EAC',
