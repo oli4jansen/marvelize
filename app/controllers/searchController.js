@@ -78,7 +78,7 @@ app.controller("searchController", function($scope, $location, $routeParams, API
 
 
 	$scope.getMoreItemsPlease = function() {
-		$scope.$apply(APIDataFactory.search($scope.query, $scope.items.length, function(error, result) {
+		$scope.$apply(APIDataFactory.search($scope.category, $scope.query, $scope.items.length, function(error, result) {
 			if(!error) {
 				$scope.items.push.apply($scope.items, $scope.parseDataForListView(result.results));
 				$scope.total = result.total;
