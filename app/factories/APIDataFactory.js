@@ -33,7 +33,7 @@ app.factory('APIDataFactory', function($http, $location, $route, $window, $sce, 
 		}
 
 		var error = '';
-		$http({method: 'GET', url: factory.pathToURL(category+'?'+fieldToQuery+'='+query+'&offset='+offset) }).success(function(data, status, headers, config) {
+		$http({method: 'GET', url: factory.pathToURL(category+'?'+fieldToQuery+'='+query+'&offset='+offset), cache: true }).success(function(data, status, headers, config) {
 			$rootScope.loading = false;
 			callback(false, data.data);
 		}).error(function(data, status, headers, config) {
@@ -52,7 +52,7 @@ app.factory('APIDataFactory', function($http, $location, $route, $window, $sce, 
 
 		var error = '';
 
-		$http({method: 'GET', url: factory.pathToURL('comics?offset='+offset) }).success(function(data, status, headers, config) {
+		$http({method: 'GET', url: factory.pathToURL('comics?offset='+offset), cache: true }).success(function(data, status, headers, config) {
 			$rootScope.loading = false;
 
 			callback(false, data.data);
@@ -72,7 +72,7 @@ app.factory('APIDataFactory', function($http, $location, $route, $window, $sce, 
 
 		var error = '';
 
-		$http({method: 'GET', url: factory.pathToURL('characters?offset='+offset) }).success(function(data, status, headers, config) {
+		$http({method: 'GET', url: factory.pathToURL('characters?offset='+offset), cache: true }).success(function(data, status, headers, config) {
 			$rootScope.loading = false;
 
 			callback(false, data.data);
@@ -87,7 +87,7 @@ app.factory('APIDataFactory', function($http, $location, $route, $window, $sce, 
 		$rootScope.loading = true;
 
 		var error = '';
-		$http({method: 'GET', url: factory.pathToURL('characters/'+id) }).success(function(data, status, headers, config) {
+		$http({method: 'GET', url: factory.pathToURL('characters/'+id), cache: true }).success(function(data, status, headers, config) {
 			$rootScope.loading = false;
 			callback(false, data.data.results[0]);
 		}).error(function(data, status, headers, config) {
