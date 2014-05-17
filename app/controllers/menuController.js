@@ -9,7 +9,7 @@ app.controller("menuController", function($scope, $location, $http, $rootScope, 
 	};
 
 	$scope.search = function() {
-		$location.path('/search/'+encodeURIComponent(this.query));
+		$location.path('/search/characters/'+encodeURIComponent(this.query));
 	};
 
 });

@@ -5,7 +5,7 @@ var app = angular.module('MarvelBrowser', ['ngRoute', 'ngAnimate']).config(funct
 		templateUrl: 'app/views/index.html',
 		controller:  'indexController'
 
-	}).when('/search/:query', {
+	}).when('/search/:category/:query', {
 
 		templateUrl: 'app/views/search.html',
 		controller:  'searchController'

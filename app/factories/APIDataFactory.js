@@ -16,12 +16,24 @@ app.factory('APIDataFactory', function($http, $location, $route, $window, $sce, 
 		return url;
 	}
 
-	factory.search = function(query, offset, callback) {
+	factory.search = function(category, query, offset, callback) {
 
 		$rootScope.loading = true;
 
+		switch(category) {
+			case 'characters':
+				var fieldToQuery = 'nameStartsWith';
+				break;
+			case 'comics':
+				var fieldToQuery = 'titleStartsWith';
+				break;
+			default:
+				var fieldToQuery = 'title';
+				break;
+		}
+
 		var error = '';
-		$http({method: 'GET', url: factory.pathToURL('characters?nameStartsWith='+query+'&offset='+offset) }).success(function(data, status, headers, config) {
+		$http({method: 'GET', url: factory.pathToURL(category+'?'+fieldToQuery+'='+query+'&offset='+offset) }).success(function(data, status, headers, config) {
 			$rootScope.loading = false;
 			callback(false, data.data);
 		}).error(function(data, status, headers, config) {

@@ -103,17 +103,56 @@ i.huge {   font-size: 150px; }
 	font-size: 22px;
 	line-height: 22px;
 }
-.image-button > i:hover {
+.image-button > i:hover,
+.image-button.active > i {
 	color: #F0141E;
+}
+
+.tab-buttons {
+	display: inline-block;
+	padding: 0;
+	margin: 0 auto;
+	font-size: 13px;
+	border-radius: 100px;
+	border: 1px solid #F0141E;
+	color: #F0141E;
+	text-decoration: none;
+	line-height: 22px;
+	text-align: center;
+}
+.tab-buttons li {
+	display: inline-block;
+	padding: 5px 10px;
+	margin: 0;
+	cursor: pointer;
+	text-transform: capitalize;
+}
+.tab-buttons li:hover, .tab-buttons li.active { color: white; background-color: #F0141E; }
+.tab-buttons li:first-child { border-radius: 100px 0 0 100px; padding-left: 20px;}
+.tab-buttons li:last-child {  border-radius: 0 100px 100px 0; padding-right: 20px; }
+
+.tab-buttons.no-border {
+	border-color: transparent;
+	color: #333;
+}
+.tab-buttons.no-border li.active,
+.tab-buttons.no-border li:hover {
+	color: #F0141E;
+	background-color: transparent;
 }
 
 .sub-menu-bar {
 	display: block;
 	padding: 20px 10px;
+	line-height: 35px;
+	height: 75px;
 }
-	.sub-menu-bar .right {
-		padding-right: 15px;
-	}
+	.sub-menu-bar .right { padding-right: 15px; }
+	.sub-menu-bar > * 	 { line-height: 35px; vertical-align: top; }
+	.sub-menu-bar .image-button { display: inline-block; height: 35px; padding: 0 10px; }
+	.sub-menu-bar .image-button i { line-height: 35px; }
+	.sub-menu-bar .tab-buttons { border: 0; line-height: 35px; }
+	.sub-menu-bar .tab-buttons li { padding: 0 10px; font-size: 13.5px }
 
 .image-view {
 	background-size: cover;

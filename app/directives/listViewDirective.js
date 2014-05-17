@@ -1,10 +1,16 @@
 app.directive('listView', function() {
 
+  var tabs = 
+      '<ul class="tab-buttons no-border">'+
+        '<li ng-repeat="tab in tabs" ng-class="{\'active\': tab == currentTab}" ng-click="$parent.changeTab(tab)">{{tab}}</li>'+
+      '</ul>';
+
   var subMenuBar = 
     '<div class="sub-menu-bar" ng-if="items.length > 0">'+
-      '<a class="image-button" ng-click="viewAsGrid()"><i class="ion-grid"></i></a>'+
-      '<a class="image-button" ng-click="viewAsList()"><i class="ion-navicon"></i></a>'+
       '<span class="right">{{total}} items</span>'+
+      '<a class="image-button" ng-click="viewAsGrid()" ng-class="{\'active\': format == \'grid\'}"><i class="ion-grid"></i></a>'+
+      '<a class="image-button" ng-click="viewAsList()" ng-class="{\'active\': format == \'list\'}"><i class="ion-navicon"></i></a>'+
+      tabs+
     '</div>';
 
   var footer = '<p ng-if="$parent.loading" class="center"><br><i class="ion-loading-d normal"></i><br><br>Asking Marvel for some data, please be patient..<br><br></p>';
@@ -14,10 +20,15 @@ app.directive('listView', function() {
     scope: {
       format: '=format',
       items: '=items',
-      total: '=total'
+      total: '=total',
+      tabs: '=',
+      currentTab: '='
     },
     template: subMenuBar+'<list-item format="format" ng-repeat="item in items" data="item"></list-item>'+footer,
     link: function(scope, element, attrs) {
+
+      scope.tabs = scope.tabs || [];
+      scope.currentTab = scope.currentTab || false;
 
       scope.viewAsGrid = function() {
         scope.format = 'grid';
@@ -25,6 +36,10 @@ app.directive('listView', function() {
 
       scope.viewAsList = function() {
         scope.format = 'list';
+      };
+
+      scope.changeTab = function(tab) {
+        scope.$parent.changeTab(tab);
       };
 
       scope.moreItemsRequests = [];
