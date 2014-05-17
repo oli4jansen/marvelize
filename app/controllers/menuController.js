@@ -1,6 +1,6 @@
 app.controller("menuController", function($scope, $location, $http, $rootScope, $sce){
 
-	$scope.navigate = function(path) {
+	$rootScope.navigate = function(path) {
 		$location.path('/'+path);
 	};
 

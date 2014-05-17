@@ -257,14 +257,16 @@ list-item, list-item * {
 	display: inline-block;
 	position: relative;
 	cursor: pointer;
-	-webkit-transition: all easeInQuart .15s;
-	-moz-transition: all easeInQuart .15s;
-	-o-transition: all easeInQuart .15s;
-	transition: all easeInQuart .15s;
+	-webkit-transition: all .25s ease, color 0s linear;
+	-moz-transition: all .25s ease, color 0s linear;
+	-o-transition: all .25s ease, color 0s linear;
+	transition: all .25s ease, color 0s linear;
+	-webkit-transform-origin: top;
+	color: transparent;
 }
 
-.ng-enter .list-item-inner { -webkit-transform: perspective(50em) rotateX(50deg); opacity: 0; }
-.ng-enter-active .list-item-inner { -webkit-transform: none; opacity: 1; }
+.ng-enter .list-item-inner { -webkit-transform: perspective(1000px) rotateX(90deg); }
+.ng-enter-active .list-item-inner { -webkit-transform: none; }
 
 .ng-leave .list-item-inner { opacity: 1; }
 .ng-leave-active .list-item-inner { opacity: 0; }
@@ -274,14 +276,25 @@ list-item, list-item * {
 	width: 50%;
 	background-color: #F0141E;
 }
+	.ng-enter .list-item-grad img,
+	.ng-enter .list-item-grid h3,
+	.ng-enter .list-item-grid p {
+		opacity: 0;
+	}
+	.ng-enter-active .list-item-grad img,
+	.ng-enter-active .list-item-grid h3,
+	.ng-enter-active .list-item-grid p {
+		opacity: 1;
+		-webkit-transition: all .25s linear .3s;
+		transition: all .25s linear .3s;
+		color: white;
+	}
 	.list-item-grid img, .list-item-grid-add img {
 		width: 100%;
 		padding: 0;
 		margin: 0;
 		vertical-align: bottom;
 		opacity: .35;
-		-webkit-transition: .25s;
-		transition: .25s;
 	}
 	.list-item-grid:hover img, .list-item-grid-add:hover img {
 		opacity: .75;
@@ -297,6 +310,7 @@ list-item, list-item * {
 		width: 100%;
 		text-align: center;
 		line-height: 50px;
+		opacity: 1;
 	}
 	.list-item-grid p, .list-item-grid-add p {
 		position: absolute;
@@ -306,6 +320,7 @@ list-item, list-item * {
 		padding-top: 15px;
 		color: white;
 		font-size: 15px;
+		opacity: 1;
 	}
 
 .list-item-list, .list-item-list-add {

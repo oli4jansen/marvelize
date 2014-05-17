@@ -1,8 +1,8 @@
-<h1 class="bigtitle center">Search results for '{{queryDecoded}}'.</h1>
+<h1 class="bigtitle center" ng-if="!searchResultsEmpty">Searching for '{{queryDecoded}}'.</h1>
 
-<p ng-if="searchResultsEmpty" class="center">Nothing found.<br>
+<h1 class="bigtitle center" ng-if="searchResultsEmpty">Nothing found.</h1>
 <br>
-Marvel restictions: your query has to be the <u>beginning of a character or comic</u>.<br>
+<p class="center" ng-if="searchResultsEmpty">Marvel restictions: your query has to be the <u>beginning of a character or comic</u>.<br>
 I.e: <i>'Iro'</i> will find <i>'Iron Man'</i> but <i>'ron Man'</i> won't.</p>
 
 
