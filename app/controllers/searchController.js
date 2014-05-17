@@ -38,8 +38,9 @@ app.controller("searchController", function($scope, $location, $routeParams, API
 	$scope.items = [];
 	$scope.total = 0;
 
-	$scope.navigateToItem = function(characterId) {
-		$location.path('/'+$scope.category+'/'+characterId);
+	$scope.navigateToItem = function(itemId) {
+		var categorySingular = $scope.category.slice(0, $scope.category.length-1);
+		$location.path('/'+categorySingular+'/'+itemId);
 	};
 
 
