@@ -257,10 +257,10 @@ list-item, list-item * {
 	display: inline-block;
 	position: relative;
 	cursor: pointer;
-	-webkit-transition: all .25s ease, color 0s linear;
-	-moz-transition: all .25s ease, color 0s linear;
-	-o-transition: all .25s ease, color 0s linear;
-	transition: all .25s ease, color 0s linear;
+	-webkit-transition: all .25s ease, color 0s linear, width 0s linear;
+	-moz-transition: all .25s ease, color 0s linear, width 0s linear;
+	-o-transition: all .25s ease, color 0s linear, width 0s linear;
+	transition: all .25s ease, color 0s linear, width 0s linear;
 	-webkit-transform-origin: top;
 	color: transparent;
 }
@@ -327,8 +327,6 @@ list-item, list-item * {
 	width: 100%;
 	background-color: #fff;
 	border-bottom: 1px solid #ced0d5;
-	-webkit-transition: background 0s;
-	transition: background 0s;
 }
 list-item:last-child .list-item-list { border-bottom: 0; }
 	.list-item-list img, .list-item-list-add img {
@@ -369,15 +367,15 @@ MOBILE SHIZZLE
 @media (max-width: 600px) {
 	.menu {
 		padding: 20px 0px 0;
-		margin: 0 1%;
-		width: 98%;
+		margin: 0;
+		width: 100%;
 	}
 		.menu form, .menu input, .menu .search { width: 100%; }
 		.menu .search { margin-top: 15px; }
 
 	.view-holder {
-		margin: 0 1%;
-		padding: 10px 5px;
+		margin: 0;
+		padding: 10px 0;
 	}
 
 	.text-image-view.medium {
