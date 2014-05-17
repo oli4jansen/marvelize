@@ -26,7 +26,7 @@ app.controller("searchController", function($scope, $location, $routeParams, API
 		Functions and vars that need to be implented for our ListView
 	*/
 
-	$scope.initialFormat = 'list';
+	$scope.initialFormat = 'grid';
 	$scope.items = [];
 	$scope.total = 0;
 
