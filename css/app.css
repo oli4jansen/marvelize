@@ -55,12 +55,11 @@ a:hover { color: #F0141E; }
 	text-align: center;
 	margin: 0 auto;
 }
-.right {
-	float: right;
-}
-.bigtitle {
-	padding: 65px 0 75px;
-}
+.left  { float: left; }
+.right { float: right; }
+
+.bigtitle    { padding: 65px 0 75px; }
+.mediumtitle { padding: 40px 0 30px; }
 
 i.normal { font-size: 30px; }
 i.huge {   font-size: 150px; }
