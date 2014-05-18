@@ -15,7 +15,7 @@ app.controller("characterController", function($scope, $rootScope, $sce, $routeP
 		APIDataFactory.getCharacter($routeParams.characterID, function(error, result) {
 			if(!error) {
 				$scope.characterData = result;
-				$scope.seriesData.descriptionHTML = $sce.trustAsHtml(result.description);
+				$scope.characterData.descriptionHTML = $sce.trustAsHtml(result.description);
 				$scope.characterImage = result.thumbnail.path+'/landscape_incredible.'+result.thumbnail.extension;
 			}else{
 				alert('Error: '+JSON.stringify(error));
