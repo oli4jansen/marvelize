@@ -74,6 +74,7 @@ i.huge {   font-size: 150px; }
 	color: #F0141E;
 	text-decoration: none;
 	line-height: 22px;
+	cursor: pointer;
 }
 .button:hover {
 	color: white;
@@ -366,6 +367,13 @@ list-item:last-child .list-item-list { border-bottom: 0; }
 }
 
 /*
+GRID SIZING SHIZZLE
+*/
+
+@media (min-width: 900px) { .list-item-grid, .list-item-grid-add { width: 33.333%; } }
+@media (min-width: 1200px) { .list-item-grid, .list-item-grid-add { width: 25%; } }
+
+/*
 MOBILE SHIZZLE
 */
 
@@ -410,4 +418,5 @@ MOBILE SHIZZLE
 	.list-item-list p, .list-item-list-add p {
 		left: 115px;
 	}
+	.list-item-grid, .list-item-grid-add { width: 100%; }
 }
