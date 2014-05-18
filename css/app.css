@@ -267,7 +267,6 @@ list-item, list-item * {
 	-webkit-transform-origin: top;
 	color: transparent;
 }
-.list-item-inner img { min-height: 156px; }
 
 .ng-enter .list-item-inner { -webkit-transform: perspective(1000px) rotateX(90deg); }
 .ng-enter-active .list-item-inner { -webkit-transform: none; }
