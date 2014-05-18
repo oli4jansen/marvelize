@@ -4,8 +4,9 @@ app.controller("searchController", function($scope, $location, $routeParams, API
 	$scope.categoryList = ['characters', 'comics'];
 
 	$scope.query = $routeParams.query;
-	$scope.queryDecoded = decodeURIComponent($scope.query);
-	$scope.searchResultsEmpty = false;
+	$scope.filterTitle = 'Searching for \''+decodeURIComponent($scope.query)+'\'.';
+
+	$scope.filterResultsEmpty = false;
 
 	$scope.init = function() {
 
@@ -20,7 +21,7 @@ app.controller("searchController", function($scope, $location, $routeParams, API
 				$scope.total = result.total;
 
 				if(result.total === 0) {
-					$scope.searchResultsEmpty = true;
+					$scope.filterResultsEmpty = true;
 				}
 				$scope.$apply();
 

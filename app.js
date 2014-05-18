@@ -7,7 +7,7 @@ var app = angular.module('MarvelBrowser', ['ngRoute', 'ngAnimate']).config(funct
 
 	}).when('/search/:category/:query', {
 
-		templateUrl: 'app/views/search.html',
+		templateUrl: 'app/views/filtered.html',
 		controller:  'searchController'
 
 	}).when('/characters', {
@@ -23,6 +23,11 @@ var app = angular.module('MarvelBrowser', ['ngRoute', 'ngAnimate']).config(funct
 	}).when('/comics', {
 
 		templateUrl: 'app/views/simpleListView.html',
+		controller:  'comicsController'
+
+	}).when('/comics/with/:characterName/:characterID', {
+
+		templateUrl: 'app/views/filtered.html',
 		controller:  'comicsController'
 
 	}).otherwise(

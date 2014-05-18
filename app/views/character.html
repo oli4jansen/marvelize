@@ -12,5 +12,5 @@
 	<p class="half image">
 		<i class="ion-ios7-bookmarks-outline huge center"></i>
 	</p><div class="half"><h1>Appeared in {{characterData.comics.available}} comics</h1><p ng-if="characterData.comics.items.length > 0">Including <span ng-repeat="comic in characterShortComicList"><a href="{{comic.resourceURI}}">{{comic.name}}</a>, </span>and more.<br>
-	<a ng-click="navigate('/comics/by/'+characterData.id)" class="button next right">See all</a></p></div>
+	<a ng-click="navigate('comics/with/'+characterData.name+'/'+characterData.id)" class="button next right">All comics with {{characterData.name}}</a></p></div>
 </div>

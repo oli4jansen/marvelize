@@ -6,6 +6,10 @@ app.factory('APIDataFactory', function($http, $location, $route, $window, $sce, 
 
 	$rootScope.loading = false;
 
+	/*
+	Utility functions
+	*/
+
 	factory.pathToURL = function(path) {
 		if(path.indexOf('?') === -1) {
 			var url = marvelAPIEndpoint+path+'?apikey='+publicKey;
@@ -15,6 +19,25 @@ app.factory('APIDataFactory', function($http, $location, $route, $window, $sce, 
 		console.log(url);
 		return url;
 	}
+
+	factory.objectToURLParams = function(object) {
+
+		var URLParams = '';
+		var i = 0;
+		var glue = '?';
+
+		for(key in object) {
+			URLParams = URLParams + glue + key + '=' + object[key];
+			if(glue == '?') glue = '&';
+		}
+
+		console.log(URLParams);
+		return URLParams;
+	}
+
+	/*
+	Data-getting functions
+	*/
 
 	factory.search = function(category, query, offset, callback) {
 
@@ -46,13 +69,15 @@ app.factory('APIDataFactory', function($http, $location, $route, $window, $sce, 
 	Comics
 	*/
 
-	factory.getComics = function(offset, callback) {
+	factory.getComics = function(URLParamsObject, callback) {
 
 		$rootScope.loading = true;
 
 		var error = '';
 
-		$http({method: 'GET', url: factory.pathToURL('comics?offset='+offset), cache: true }).success(function(data, status, headers, config) {
+		var URLParams = factory.objectToURLParams(URLParamsObject);
+
+		$http({method: 'GET', url: factory.pathToURL('comics'+URLParams), cache: true }).success(function(data, status, headers, config) {
 			$rootScope.loading = false;
 
 			callback(false, data.data);

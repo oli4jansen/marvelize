@@ -1,0 +1,9 @@
+<h1 class="bigtitle center" ng-if="!filterResultsEmpty">{{filterTitle}}</h1>
+
+<h1 class="bigtitle center" ng-if="filterResultsEmpty">Nothing found.</h1>
+<br>
+<p class="center" ng-if="filterResultsEmpty">Marvel restictions: your query has to be the <u>beginning of a character or comic</u>.<br>
+I.e: <i>'Iro'</i> will find <i>'Iron Man'</i> but <i>'ron Man'</i> won't.</p>
+
+
+<list-view format="initialFormat" items="items" total="total" tabs="categoryList" current-tab="category"></list-view>

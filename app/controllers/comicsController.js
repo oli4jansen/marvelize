@@ -1,7 +1,15 @@
-app.controller("comicsController", function($scope, $location, APIDataFactory, parseDataFactory){
+app.controller("comicsController", function($scope, $location, $routeParams, APIDataFactory, parseDataFactory){
 
 	$scope.init = function() {
-		APIDataFactory.getComics(0, function(error, result) {
+
+		var URLParamsObject = {};
+
+		if($routeParams.characterName && $routeParams.characterID ) {
+			$scope.filterTitle = 'Comics with \''+$routeParams.characterName+'\'';
+			URLParamsObject.characters = $routeParams.characterID;
+		}
+
+		APIDataFactory.getComics(URLParamsObject, function(error, result) {
 			if(!error) {
 				console.log(result.results);
 				$scope.items = parseDataFactory.parse('comics', result.results);
@@ -26,7 +34,7 @@ app.controller("comicsController", function($scope, $location, APIDataFactory, p
 	}
 
 	$scope.getMoreItemsPlease = function() {
-		$scope.$apply(APIDataFactory.getComics($scope.items.length, function(error, result) {
+		$scope.$apply(APIDataFactory.getComics({ offset: $scope.items.length }, function(error, result) {
 			if(!error) {
 				$scope.items.push.apply($scope.items, parseDataFactory.parse('comics', result.results));
 				$scope.total = result.total;
