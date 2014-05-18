@@ -20,10 +20,20 @@ var app = angular.module('MarvelBrowser', ['ngRoute', 'ngAnimate']).config(funct
 		templateUrl: 'app/views/character.html',
 		controller:  'characterController'
 
+	}).when('/characters/in/:seriesName/:seriesID', {
+
+		templateUrl: 'app/views/filtered.html',
+		controller:  'charactersController'
+
 	}).when('/series', {
 
 		templateUrl: 'app/views/simpleListView.html',
 		controller:  'seriesController'
+
+	}).when('/series/:seriesID', {
+
+		templateUrl: 'app/views/series.html',
+		controller:  'seriesSingularController'
 
 	}).when('/series/with/:characterName/:characterID', {
 

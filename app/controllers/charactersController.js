@@ -1,7 +1,15 @@
-app.controller("charactersController", function($scope, $location, APIDataFactory, parseDataFactory){
+app.controller("charactersController", function($scope, $routeParams, $location, APIDataFactory, parseDataFactory){
 
 	$scope.init = function() {
-		APIDataFactory.getCharacters(0, function(error, result) {
+
+		var URLParamsObject = {};
+
+		if($routeParams.seriesName && $routeParams.seriesID ) {
+			$scope.filterTitle = 'Characters in \''+$routeParams.seriesName+'\'';
+			URLParamsObject.series = $routeParams.seriesID;
+		}
+
+		APIDataFactory.getCharacters(URLParamsObject, function(error, result) {
 			if(!error) {
 				console.log(result.results);
 				$scope.items = parseDataFactory.parse('characters', result.results);
@@ -28,7 +36,7 @@ app.controller("charactersController", function($scope, $location, APIDataFactor
 	}
 
 	$scope.getMoreItemsPlease = function() {
-		$scope.$apply(APIDataFactory.getCharacters($scope.items.length, function(error, result) {
+		$scope.$apply(APIDataFactory.getCharacters({ offset: $scope.items.length }, function(error, result) {
 			if(!error) {
 				$scope.items.push.apply($scope.items, parseDataFactory.parse('characters', result.results));
 				$scope.total = result.total;

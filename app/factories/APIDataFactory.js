@@ -86,17 +86,33 @@ app.factory('APIDataFactory', function($http, $location, $route, $window, $sce, 
 		});
 	};
 
+	factory.getSeriesSingular = function(id, callback) {
+		
+		$rootScope.loading = true;
+
+		var error = '';
+		$http({method: 'GET', url: factory.pathToURL('series/'+id), cache: true }).success(function(data, status, headers, config) {
+			$rootScope.loading = false;
+			callback(false, data.data.results[0]);
+		}).error(function(data, status, headers, config) {
+			$rootScope.loading = false;
+			callback(data, []);
+		});
+	};
+
 	/*
 	Characters
 	*/
 
-	factory.getCharacters = function(offset, callback) {
+	factory.getCharacters = function(URLParamsObject, callback) {
 
 		$rootScope.loading = true;
 
 		var error = '';
 
-		$http({method: 'GET', url: factory.pathToURL('characters?offset='+offset), cache: true }).success(function(data, status, headers, config) {
+		var URLParams = factory.objectToURLParams(URLParamsObject);
+
+		$http({method: 'GET', url: factory.pathToURL('characters'+URLParams), cache: true }).success(function(data, status, headers, config) {
 			$rootScope.loading = false;
 
 			callback(false, data.data);

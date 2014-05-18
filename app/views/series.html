@@ -1,0 +1,21 @@
+<div class="image-view cover" ng-style="{backgroundImage: 'url('+seriesImage+')'}">
+	<h1 class="center">{{seriesData.title}}</h1>
+</div>
+
+<div class="text-image-view medium" ng-if="seriesData.description.length > 0">
+	<div class="half"><p ng-bind-html="seriesData.descriptionHTML"></p></div><p class="half image">
+		<i class="ion-ios7-bookmarks-outline huge center"></i>
+	</p>
+</div>
+
+<div class="text-image-view medium" ng-if="seriesData.characters.available > 0">
+	<p class="half image">
+		<i class="ion-ios7-person-outline huge center"></i>
+	</p><div class="half">
+		<h1>{{seriesData.characters.available}} characters appeared</h1>
+
+		<h4 ng-repeat="characters in seriesData.characters.items|limitTo:3" ng-class="{'border-bottom':!$last}" class="small-list-item">{{characters.name}}</h4>
+	
+		<a ng-click="navigate('characters/in/'+seriesData.title+'/'+seriesData.id)" class="button next">All characters in {{seriesData.title}}</a>
+	</div>
+</div>

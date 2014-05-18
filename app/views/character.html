@@ -3,7 +3,7 @@
 </div>
 
 <div class="text-image-view medium" ng-if="characterData.description.length > 0">
-	<div class="half"><h1>About {{characterData.name}}</h1><p>"{{characterData.description}}"</p></div><p class="half image">
+	<div class="half"><h1>About {{characterData.name}}</h1><p ng-bind-html="characterData.descriptionHTML"></p></div><p class="half image">
 		<i class="ion-ios7-person-outline huge center"></i>
 	</p>
 </div>
