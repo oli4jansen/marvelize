@@ -12,7 +12,7 @@
 <body ng-class="{'cover': coverActive}">
 	
 	<ul class="menu" ng-controller="menuController">
-		<li class="left"><i class="ion-ios7-refresh-outline loading-indicator" ng-class="{'active': loading}"></i><a ng-click="home()">MarvelBrowser</a></li>
+		<li class="left"><a ng-click="home()">MarvelBrowser</a></li>
 		<li><a ng-click="navigate('comics')">Comics</a></li>
 		<li><a ng-click="navigate('characters')">Characters</a></li>
 		<li class="search"><form ng-submit="search()"><input type="search" ng-model="query" placeholder="Search.."></form></li>

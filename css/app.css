@@ -281,12 +281,11 @@ list-item, list-item * {
 	.ng-enter .list-item-grid p {
 		opacity: 0;
 	}
-	.ng-enter-active .list-item-grad img,
 	.ng-enter-active .list-item-grid h3,
 	.ng-enter-active .list-item-grid p {
 		opacity: 1;
-		-webkit-transition: all .25s linear .3s;
-		transition: all .25s linear .3s;
+		-webkit-transition: all .25s linear .5s;
+		transition: all .25s linear .5s;
 		color: white;
 	}
 	.list-item-grid img, .list-item-grid-add img {
@@ -295,9 +294,16 @@ list-item, list-item * {
 		margin: 0;
 		vertical-align: bottom;
 		opacity: .35;
+		-webkit-transition: all .25s linear 0;
+		transition: all .25s linear 0;
 	}
-	.list-item-grid:hover img, .list-item-grid-add:hover img {
-		opacity: .75;
+	.ng-enter .list-item-grid img {
+		-webkit-transition: all .25s linear .35s;
+		transition: all .25s linear .35s;
+	}
+	.list-item-grid:hover img, .list-item-grid-add:hover img,
+	.list-item-grid:hover h3, .list-item-grid:hover p {
+		opacity: 1;
 	}
 	.list-item-grid h3, .list-item-grid-add h3 {
 		position: absolute;
