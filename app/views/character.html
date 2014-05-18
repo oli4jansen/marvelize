@@ -11,6 +11,11 @@
 <div class="text-image-view medium" ng-if="characterData.series.available > 0">
 	<p class="half image">
 		<i class="ion-ios7-bookmarks-outline huge center"></i>
-	</p><div class="half"><h1>Appeared in {{characterData.series.available}} series</h1><p ng-if="characterData.series.items.length > 0">Including <span ng-repeat="series in characterShortSeriesList"><a href="{{series.resourceURI}}">{{series.name}}</a>, </span><span ng-if="characterShortSeriesList.length > 3">and more</span>.<br>
-	<a ng-click="navigate('series/with/'+characterData.name+'/'+characterData.id)" class="button next right">All series with {{characterData.name}}</a></p></div>
+	</p><div class="half">
+		<h1>Appeared in {{characterData.series.available}} series</h1>
+
+		<h4 ng-repeat="series in characterData.series.items|limitTo:4" ng-class="{'border-bottom':!$last}" class="small-list-item">{{series.name}}</h4>
+	
+		<a ng-click="navigate('series/with/'+characterData.name+'/'+characterData.id)" class="button next">All series with {{characterData.name}}</a>
+	</div>
 </div>

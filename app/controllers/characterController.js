@@ -1,9 +1,13 @@
-app.controller("characterController", function($scope, $rootScope, $routeParams, APIDataFactory){
+app.controller("characterController", function($scope, $rootScope, $routeParams, APIDataFactory, parseDataFactory){
 
 	$scope.characterID = $routeParams.characterID;
 	$scope.characterData;
 
 	$scope.characterImage;
+
+	$scope.initialFormat = 'list';
+	$scope.tabs = [];
+	$scope.currentTab = '';
 
 	$rootScope.coverActive = true;
 
@@ -12,11 +16,6 @@ app.controller("characterController", function($scope, $rootScope, $routeParams,
 			if(!error) {
 				$scope.characterData = result;
 				$scope.characterImage = result.thumbnail.path+'/landscape_incredible.'+result.thumbnail.extension;
-
-				$scope.characterShortSeriesList = result.series.items;
-				if($scope.characterShortSeriesList.length > 3) {
-					$scope.characterShortSeriesList = result.series.items.splice(0, 3);
-				}
 			}else{
 				alert('Error: '+JSON.stringify(error));
 			}

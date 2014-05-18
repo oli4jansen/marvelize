@@ -26,6 +26,8 @@ app.controller("seriesController", function($scope, $location, $routeParams, API
 
 	$scope.initialFormat = 'grid';
 	$scope.items = [];
+	$scope.tabs = [];
+	$scope.currentTab = '';
 	$scope.total = 0;
 
 	// Function called by the ListView when a ListViewItem is clicked

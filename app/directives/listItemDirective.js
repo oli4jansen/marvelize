@@ -12,7 +12,7 @@ app.directive('listItem', function() {
       '</div>',
     link: function(scope, element, attrs) {
       scope.navigate = function() {
-        scope.$parent.$parent.$parent.navigateToItem(scope.data.id);
+        if(typeof scope.$parent.$parent.$parent.navigateToItem == 'function') scope.$parent.$parent.$parent.navigateToItem(scope.data.id);
       }
     }
   }

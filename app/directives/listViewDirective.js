@@ -39,7 +39,7 @@ app.directive('listView', function() {
       };
 
       scope.changeTab = function(tab) {
-        scope.$parent.changeTab(tab);
+        if(typeof scope.$parent.changeTab == 'function') scope.$parent.changeTab(tab);
       };
 
       scope.moreItemsRequests = [];
@@ -48,7 +48,7 @@ app.directive('listView', function() {
       scope.infiniteScrollTriggered = function() {
         if(!scope.moreItemsRequests[scope.items.length] && scope.items.length !== scope.total) {
           scope.moreItemsRequests[scope.items.length] = true;
-          scope.$parent.getMoreItemsPlease();
+          if(typeof scope.$parent.getMoreItemsPlease == 'function') scope.$parent.getMoreItemsPlease();
         }
       };
 

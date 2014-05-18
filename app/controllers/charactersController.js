@@ -18,6 +18,8 @@ app.controller("charactersController", function($scope, $location, APIDataFactor
 
 	$scope.initialFormat = 'grid';
 	$scope.items = [];
+	$scope.tabs = [];
+	$scope.currentTab = '';
 	$scope.total = 0;
 
 	// Function called by the ListView when a ListViewItem is clicked

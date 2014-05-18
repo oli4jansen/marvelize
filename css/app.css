@@ -61,13 +61,16 @@ a:hover { color: #F0141E; }
 .bigtitle    { padding: 65px 0 75px; }
 .mediumtitle { padding: 40px 0 30px; }
 
+.border-bottom { border-bottom: 1px solid #ced0d5; }
+.small-list-item { padding: 10px 5px; }
+
 i.normal { font-size: 30px; }
 i.huge {   font-size: 150px; }
 
 .button {
 	display: inline-block;
 	padding: 5px 15px;
-	margin: 10px 5px;
+	margin: 15px 5px 10px;
 	font-size: 13px;
 	border-radius: 100px;
 	border: 1px solid #F0141E;
@@ -264,6 +267,7 @@ list-item, list-item * {
 	-webkit-transform-origin: top;
 	color: transparent;
 }
+.list-item-inner img { min-height: 156px; }
 
 .ng-enter .list-item-inner { -webkit-transform: perspective(1000px) rotateX(90deg); }
 .ng-enter-active .list-item-inner { -webkit-transform: none; }
