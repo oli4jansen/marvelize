@@ -11,11 +11,10 @@ app.factory('APIDataFactory', function($http, $location, $route, $window, $sce, 
 	*/
 
 	factory.pathToURL = function(path) {
-		if(path.indexOf('?') === -1) {
-			var url = marvelAPIEndpoint+path+'?apikey='+publicKey;
-		}else{
-			var url = marvelAPIEndpoint+path+'&apikey='+publicKey;
-		}
+		var glue = '?';
+		if(path.indexOf('?') > -1) glue = '&';
+
+		var url = marvelAPIEndpoint+path+glue+'apikey='+publicKey+'&limit=50';
 		console.log(url);
 		return url;
 	}
