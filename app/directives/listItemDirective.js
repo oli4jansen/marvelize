@@ -6,7 +6,7 @@ app.directive('listItem', function() {
       data: '=data'
     },
     template: '<div ng-click="navigate()" class="list-item-inner list-item-{{format}}">'+
-        '<img src="{{data.image}}">'+
+        '<img ng-src="{{data.image}}">'+
         '<h3>{{data.title}}</h3>'+
         '<p>{{data.description}}</p>'+
       '</div>',

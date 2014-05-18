@@ -1,7 +1,7 @@
 app.controller("searchController", function($scope, $location, $routeParams, $sce, APIDataFactory, parseDataFactory){
 
 	$scope.category = $routeParams.category;
-	$scope.categoryList = ['characters', 'comics'];
+	$scope.categoryList = ['characters', 'series'];
 
 	$scope.query = $routeParams.query;
 	$scope.filterTitle = 'Searching for \''+decodeURIComponent($scope.query)+'\'.';
@@ -30,11 +30,9 @@ app.controller("searchController", function($scope, $location, $routeParams, $sc
 						$scope.nothingFoundHint = $sce.trustAsHtml('We\'ll now search for '+$scope.categoryList[index+1]);
 						$scope.navigate('search/'+$scope.categoryList[index+1]+'/'+$scope.query);
 					}else{
-						$scope.nothingFoundHint = $sce.trustAsHtml('Marvel restictions: your query has to be the <u>beginning of a character or comic</u>.<br><br>I.e: <i>\'Iro\'</i> will find <i>\'Iron Man\'</i> but <i>\'ron Man\'</i> won\'t.');
+						$scope.nothingFoundHint = $sce.trustAsHtml('Marvel restictions: your query has to be the <u>beginning of a character or series</u>.<br><br>I.e: <i>\'Iro\'</i> will find <i>\'Iron Man\'</i> but <i>\'ron Man\'</i> won\'t.');
 					}
 				}
-				$scope.$apply();
-
 			}else{
 				alert('Error: '+JSON.stringify(error));
 			}

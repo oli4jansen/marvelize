@@ -13,7 +13,7 @@ app.controller("characterController", function($scope, $rootScope, $routeParams,
 				$scope.characterData = result;
 				$scope.characterImage = result.thumbnail.path+'/landscape_incredible.'+result.thumbnail.extension;
 
-				$scope.characterShortComicList = result.comics.items.splice(0, 3);
+				$scope.characterShortSeriesList = result.series.items.splice(0, 3);
 			}else{
 				alert('Error: '+JSON.stringify(error));
 			}

@@ -13,7 +13,7 @@
 	
 	<ul class="menu" ng-controller="menuController">
 		<li class="left"><a ng-click="home()">MarvelBrowser</a></li>
-		<li><a ng-click="navigate('comics')">Comics</a></li>
+		<li><a ng-click="navigate('series')">Series</a></li>
 		<li><a ng-click="navigate('characters')">Characters</a></li>
 		<li class="search"><form ng-submit="search()"><input type="search" ng-model="query" placeholder="Search.."></form></li>
 	</ul>
@@ -35,7 +35,7 @@
 	<script type="text/javascript" src="app/controllers/charactersController.js"></script>
 	<script type="text/javascript" src="app/controllers/characterController.js"></script>
 
-	<script type="text/javascript" src="app/controllers/comicsController.js"></script>
+	<script type="text/javascript" src="app/controllers/seriesController.js"></script>
 
 	<script type="text/javascript" src="app/factories/APIDataFactory.js"></script>
 	<script type="text/javascript" src="app/factories/parseDataFactory.js"></script>

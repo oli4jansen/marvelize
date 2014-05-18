@@ -8,9 +8,9 @@
 	</p>
 </div>
 
-<div class="text-image-view medium" ng-if="characterData.comics.available > 0">
+<div class="text-image-view medium" ng-if="characterData.series.available > 0">
 	<p class="half image">
 		<i class="ion-ios7-bookmarks-outline huge center"></i>
-	</p><div class="half"><h1>Appeared in {{characterData.comics.available}} comics</h1><p ng-if="characterData.comics.items.length > 0">Including <span ng-repeat="comic in characterShortComicList"><a href="{{comic.resourceURI}}">{{comic.name}}</a>, </span>and more.<br>
-	<a ng-click="navigate('comics/with/'+characterData.name+'/'+characterData.id)" class="button next right">All comics with {{characterData.name}}</a></p></div>
+	</p><div class="half"><h1>Appeared in {{characterData.series.available}} series</h1><p ng-if="characterData.series.items.length > 0">Including <span ng-repeat="series in characterShortSeriesList"><a href="{{series.resourceURI}}">{{series.name}}</a>, </span>and more.<br>
+	<a ng-click="navigate('series/with/'+characterData.name+'/'+characterData.id)" class="button next right">All series with {{characterData.name}}</a></p></div>
 </div>

@@ -20,14 +20,14 @@ app.factory('parseDataFactory', function() {
 				});
 
 				break;
-			case 'comics':
+			case 'series':
 				data.forEach(function(item){
 					var parsedItem =
 						{
 							id: item.id,
 							title: item.title,
 							image: item.thumbnail.path+'/landscape_amazing.'+item.thumbnail.extension,
-							description: '$'+item.prices[0].price
+							description: item.comics.available+' comics available'
 						};
 					parsedData.push(parsedItem);
 				});
