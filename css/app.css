@@ -199,6 +199,15 @@ i.huge {   font-size: 150px; }
 		line-height: 26px;
 	}
 
+.column-holder { padding: 45px 0; }
+.column-holder > * { padding: 0 15px; }
+
+.half {
+	display: inline-block;
+	width: 50%;
+	vertical-align: top;
+}
+
 /* Once-A-Page classes */
 
 .menu {

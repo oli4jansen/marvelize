@@ -1,7 +1,7 @@
 app.controller("searchController", function($scope, $location, $routeParams, $sce, APIDataFactory, parseDataFactory){
 
 	$scope.category = $routeParams.category;
-	$scope.categoryList = ['characters', 'series'];
+	$scope.categoryList = ['characters', 'series', 'comics'];
 
 	$scope.query = $routeParams.query;
 	$scope.filterTitle = 'Searching for \''+decodeURIComponent($scope.query)+'\'.';

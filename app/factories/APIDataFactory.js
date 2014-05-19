@@ -17,7 +17,7 @@ app.factory('APIDataFactory', function($http, $location, $route, $window, $sce, 
 		var url = marvelAPIEndpoint+path+glue+'apikey='+publicKey+'&limit=50';
 		console.log(url);
 		return url;
-	}
+	};
 
 	factory.objectToURLParams = function(object) {
 
@@ -32,7 +32,30 @@ app.factory('APIDataFactory', function($http, $location, $route, $window, $sce, 
 
 		console.log(URLParams);
 		return URLParams;
-	}
+	};
+
+	/*
+	General functions
+	*/
+
+	factory.getList = function(type, URLParamsObject, callback) {
+		
+		$rootScope.loading = true;
+
+		var error = '';
+
+		var URLParams = factory.objectToURLParams(URLParamsObject);
+
+		$http({method: 'GET', url: factory.pathToURL(type+URLParams), cache: true }).success(function(data, status, headers, config) {
+			$rootScope.loading = false;
+
+			callback(false, data.data);
+		}).error(function(data, status, headers, config) {
+			$rootScope.loading = false;
+			callback(data, []);
+		});
+
+	};
 
 	/*
 	Data-getting functions
@@ -54,37 +77,18 @@ app.factory('APIDataFactory', function($http, $location, $route, $window, $sce, 
 				break;
 		}
 
-		var error = '';
-		$http({method: 'GET', url: factory.pathToURL(category+'?'+fieldToQuery+'='+query+'&offset='+offset), cache: true }).success(function(data, status, headers, config) {
-			$rootScope.loading = false;
-			callback(false, data.data);
-		}).error(function(data, status, headers, config) {
-			$rootScope.loading = false;
-			callback(data, []);
-		});
+		var URLParamsObject = {};
+		URLParamsObject[fieldToQuery] = query;
+		URLParamsObject.offset = offset;
+
+		factory.getList(category, URLParamsObject, callback);
 	};
 
 	/*
 	Series
 	*/
 
-	factory.getSeries = function(URLParamsObject, callback) {
-
-		$rootScope.loading = true;
-
-		var error = '';
-
-		var URLParams = factory.objectToURLParams(URLParamsObject);
-
-		$http({method: 'GET', url: factory.pathToURL('series'+URLParams), cache: true }).success(function(data, status, headers, config) {
-			$rootScope.loading = false;
-
-			callback(false, data.data);
-		}).error(function(data, status, headers, config) {
-			$rootScope.loading = false;
-			callback(data, []);
-		});
-	};
+	factory.getSeries = function(URLParamsObject, callback) { factory.getList('series', URLParamsObject, callback) };
 
 	factory.getSeriesSingular = function(id, callback) {
 		
@@ -104,23 +108,7 @@ app.factory('APIDataFactory', function($http, $location, $route, $window, $sce, 
 	Characters
 	*/
 
-	factory.getCharacters = function(URLParamsObject, callback) {
-
-		$rootScope.loading = true;
-
-		var error = '';
-
-		var URLParams = factory.objectToURLParams(URLParamsObject);
-
-		$http({method: 'GET', url: factory.pathToURL('characters'+URLParams), cache: true }).success(function(data, status, headers, config) {
-			$rootScope.loading = false;
-
-			callback(false, data.data);
-		}).error(function(data, status, headers, config) {
-			$rootScope.loading = false;
-			callback(data, []);
-		});
-	};
+	factory.getCharacters = function(URLParamsObject, callback) { factory.getList('characters', URLParamsObject, callback) };
 
 	factory.getCharacter = function(id, callback) {
 		
@@ -135,6 +123,12 @@ app.factory('APIDataFactory', function($http, $location, $route, $window, $sce, 
 			callback(data, []);
 		});
 	};
+
+	/*
+	Comics
+	*/
+
+	factory.getComics = function(URLParamsObject, callback) { factory.getList('comics', URLParamsObject, callback) };
 
 	return factory;
 });

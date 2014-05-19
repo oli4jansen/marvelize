@@ -8,14 +8,18 @@
 	</p>
 </div>
 
-<div class="text-image-view medium" ng-if="seriesData.characters.available > 0">
-	<p class="half image">
-		<i class="ion-ios7-person-outline huge center"></i>
-	</p><div class="half">
-		<h1>{{seriesData.characters.available}} characters appeared</h1>
+<div class="column-holder">
+	<div class="half" ng-if="seriesData.characters.available > 0">
+		<h1>{{seriesData.characters.available}} characters</h1>
 
-		<h4 ng-repeat="characters in seriesData.characters.items|limitTo:3" ng-class="{'border-bottom':!$last}" class="small-list-item">{{characters.name}}</h4>
-	
+		<h4 ng-repeat="character in seriesData.characters.items|limitTo:3" ng-class="{'border-bottom':!$last}" class="small-list-item">{{character.name}}</h4>
+		
 		<a ng-click="navigate('characters/in/'+seriesData.title+'/'+seriesData.id)" class="button next">All characters in this series</a>
+	</div><div class="half" ng-if="seriesData.comics.available > 0">
+		<h1>{{seriesData.comics.available}} comics</h1>
+
+		<h4 ng-repeat="comic in seriesData.comics.items|limitTo:3" ng-class="{'border-bottom':!$last}" class="small-list-item">{{comic.name}}</h4>
+		
+		<a ng-click="navigate('comics/from/'+seriesData.title+'/'+seriesData.id)" class="button next">All comics from this series</a>
 	</div>
 </div>
