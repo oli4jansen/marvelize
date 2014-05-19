@@ -1,5 +1,7 @@
 app.controller("menuController", function($scope, $location, $http, $rootScope, $sce){
 
+	$rootScope.showMobileMenu = false;
+
 	$rootScope.navigate = function(path) {
 		$location.path('/'+path);
 	};

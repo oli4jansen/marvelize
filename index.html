@@ -11,12 +11,14 @@
 </head>
 <body ng-class="{'cover': coverActive}">
 	
-	<ul class="menu" ng-controller="menuController">
-		<li class="left"><a ng-click="home()">MarvelBrowser</a></li>
+	<ul class="menu" ng-controller="menuController" ng-class="{'show': showMobileMenu}">
+		<li class="left desktop-only"><a ng-click="home()">MarvelBrowser</a></li>
 		<li><a ng-click="navigate('series')">Series</a></li>
 		<li><a ng-click="navigate('characters')">Characters</a></li>
 		<li class="search"><form ng-submit="search()"><input type="search" ng-model="query" placeholder="Search.."></form></li>
 	</ul>
+
+	<span class="mobile-only menu-toggle" ng-click="showMobileMenu = !showMobileMenu"><i class="ion-navicon medium" ng-class="{'white': showMobileMenu}"></i> <span ng-show="!showMobileMenu">MarvelBrowser</span></span>
 
 	<div class="view-holder" ng-view ng-init="init()"></div>
 

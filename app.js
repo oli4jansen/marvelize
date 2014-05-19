@@ -43,6 +43,7 @@ var app = angular.module('MarvelBrowser', ['ngRoute', 'ngAnimate']).config(funct
 }).run( function($rootScope) {
 	$rootScope.$on( "$routeChangeStart", function(event, next, current) {
 		$rootScope.coverActive = false;
+		$rootScope.showMobileMenu = false;
     });
  });
 
