@@ -16,6 +16,6 @@
 
 		<h4 ng-repeat="characters in seriesData.characters.items|limitTo:3" ng-class="{'border-bottom':!$last}" class="small-list-item">{{characters.name}}</h4>
 	
-		<a ng-click="navigate('characters/in/'+seriesData.title+'/'+seriesData.id)" class="button next">All characters in {{seriesData.title}}</a>
+		<a ng-click="navigate('characters/in/'+seriesData.title+'/'+seriesData.id)" class="button next">All characters in this series</a>
 	</div>
 </div>
