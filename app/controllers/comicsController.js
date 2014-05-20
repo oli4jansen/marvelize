@@ -21,7 +21,7 @@ app.controller("comicsController", function($scope, $routeParams, $location, API
 
 			$scope.backButton = {
 				type: 'event',
-				id: $routeParams.seriesID
+				id: $routeParams.eventID
 			};
 
 		}else if($routeParams.characterName && $routeParams.characterID ) {
@@ -31,7 +31,7 @@ app.controller("comicsController", function($scope, $routeParams, $location, API
 
 			$scope.backButton = {
 				type: 'character',
-				id: $routeParams.seriesID
+				id: $routeParams.characterID
 			};
 
 		}
