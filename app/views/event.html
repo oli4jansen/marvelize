@@ -14,7 +14,7 @@
 
 		<h4 ng-repeat="series in eventData.series.items|limitTo:4" ng-class="{'border-bottom':!$last}" class="small-list-item">{{series.name}}</h4>
 	
-		<a ng-click="navigate('series/with/'+eventData.name+'/'+eventData.id)" class="button next">All series in which this event takes place</a>
+		<a ng-click="navigate('series/with/event/'+eventData.name+'/'+eventData.id)" class="button next">All series in which this event takes place</a>
 	</div><div class="half" ng-if="eventData.characters.available > 0">
 		<h1>{{eventData.characters.available}} characters</h1>
 

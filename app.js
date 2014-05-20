@@ -27,7 +27,10 @@ var app = angular.module('MarvelBrowser', ['ngRoute', 'ngAnimate']).config(funct
 	}).when('/series/:seriesID', {
 		templateUrl: 'app/views/series.html',
 		controller:  'seriesSingularController'
-	}).when('/series/with/:characterName/:characterID', {
+	}).when('/series/with/character/:characterName/:characterID', {
+		templateUrl: 'app/views/filtered.html',
+		controller:  'seriesController'
+	}).when('/series/with/event/:eventName/:eventID', {
 		templateUrl: 'app/views/filtered.html',
 		controller:  'seriesController'
 
