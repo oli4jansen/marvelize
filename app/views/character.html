@@ -8,14 +8,18 @@
 	</p>
 </div>
 
-<div class="text-image-view medium" ng-if="characterData.series.available > 0">
-	<p class="half image">
-		<i class="ion-ios7-bookmarks-outline huge center"></i>
-	</p><div class="half">
+<div class="column-holder">
+	<div class="half" ng-if="characterData.series.available > 0">
 		<h1>Appeared in {{characterData.series.available}} series</h1>
 
 		<h4 ng-repeat="series in characterData.series.items|limitTo:4" ng-class="{'border-bottom':!$last}" class="small-list-item">{{series.name}}</h4>
 	
 		<a ng-click="navigate('series/with/'+characterData.name+'/'+characterData.id)" class="button next">All series with {{characterData.name}}</a>
+	</div><div class="half" ng-if="characterData.events.available > 0">
+		<h1>Appeared in {{characterData.events.available}} events</h1>
+
+		<h4 ng-repeat="event in characterData.events.items|limitTo:4" ng-class="{'border-bottom':!$last}" class="small-list-item">{{event.name}}</h4>
+	
+		<a ng-click="navigate('events/with/'+characterData.name+'/'+characterData.id)" class="button next">All events with {{characterData.name}}</a>
 	</div>
 </div>

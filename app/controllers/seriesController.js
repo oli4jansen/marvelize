@@ -5,8 +5,15 @@ app.controller("seriesController", function($scope, $location, $routeParams, API
 	$scope.init = function() {
 
 		if($routeParams.characterName && $routeParams.characterID ) {
+
 			$scope.filterTitle = 'Series with \''+$routeParams.characterName+'\'';
 			$scope.URLParamsObject.characters = $routeParams.characterID;
+
+			$scope.backButton = {
+				type: 'character',
+				id: $routeParams.characterID
+			};
+
 		}
 
 		APIDataFactory.getSeries($scope.URLParamsObject, function(error, result) {

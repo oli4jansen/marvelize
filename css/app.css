@@ -97,6 +97,18 @@ i.huge {   font-size: 150px; }
 		line-height: 22px;
 	}
 
+	.button.previous {
+		padding-left: 15px;
+	}
+	.button.previous:before {
+		font-size: 14px;
+		content: "\f153";
+		font-family: Ionicons;
+		padding-right: 10px;
+		margin-top: 5px;
+		line-height: 22px;
+	}
+
 .image-button {
 	border-color: transparent;
 	color: #333;

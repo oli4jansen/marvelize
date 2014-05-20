@@ -5,8 +5,25 @@ app.controller("charactersController", function($scope, $routeParams, $location,
 	$scope.init = function() {
 
 		if($routeParams.seriesName && $routeParams.seriesID ) {
+
 			$scope.filterTitle = 'Characters in \''+$routeParams.seriesName+'\'';
 			$scope.URLParamsObject.series = $routeParams.seriesID;
+
+			$scope.backButton = {
+				type: 'series',
+				id: $routeParams.seriesID
+			};
+
+		}else if($routeParams.eventName && $routeParams.eventID ) {
+
+			$scope.filterTitle = 'Characters in \''+$routeParams.eventName+'\'';
+			$scope.URLParamsObject.events = $routeParams.eventID;
+
+			$scope.backButton = {
+				type: 'event',
+				id: $routeParams.eventID
+			};
+
 		}
 
 		APIDataFactory.getCharacters($scope.URLParamsObject, function(error, result) {

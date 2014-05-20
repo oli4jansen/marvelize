@@ -57,6 +57,21 @@ app.factory('APIDataFactory', function($http, $location, $route, $window, $sce, 
 
 	};
 
+	factory.getByID = function(type, id, callback) {
+		
+		$rootScope.loading = true;
+
+		var error = '';
+		$http({method: 'GET', url: factory.pathToURL(type+'/'+id), cache: true }).success(function(data, status, headers, config) {
+			$rootScope.loading = false;
+			callback(false, data.data.results[0]);
+		}).error(function(data, status, headers, config) {
+			$rootScope.loading = false;
+			callback(data, []);
+		});
+
+	};
+
 	/*
 	Data-getting functions
 	*/
@@ -84,51 +99,17 @@ app.factory('APIDataFactory', function($http, $location, $route, $window, $sce, 
 		factory.getList(category, URLParamsObject, callback);
 	};
 
-	/*
-	Series
-	*/
-
 	factory.getSeries = function(URLParamsObject, callback) { factory.getList('series', URLParamsObject, callback) };
-
-	factory.getSeriesSingular = function(id, callback) {
-		
-		$rootScope.loading = true;
-
-		var error = '';
-		$http({method: 'GET', url: factory.pathToURL('series/'+id), cache: true }).success(function(data, status, headers, config) {
-			$rootScope.loading = false;
-			callback(false, data.data.results[0]);
-		}).error(function(data, status, headers, config) {
-			$rootScope.loading = false;
-			callback(data, []);
-		});
-	};
-
-	/*
-	Characters
-	*/
+	factory.getSeriesSingular = function(id, callback) { factory.getByID('series', id, callback); };
 
 	factory.getCharacters = function(URLParamsObject, callback) { factory.getList('characters', URLParamsObject, callback) };
-
-	factory.getCharacter = function(id, callback) {
-		
-		$rootScope.loading = true;
-
-		var error = '';
-		$http({method: 'GET', url: factory.pathToURL('characters/'+id), cache: true }).success(function(data, status, headers, config) {
-			$rootScope.loading = false;
-			callback(false, data.data.results[0]);
-		}).error(function(data, status, headers, config) {
-			$rootScope.loading = false;
-			callback(data, []);
-		});
-	};
-
-	/*
-	Comics
-	*/
+	factory.getCharacter = function(id, callback) { factory.getByID('characters', id, callback); };
 
 	factory.getComics = function(URLParamsObject, callback) { factory.getList('comics', URLParamsObject, callback) };
+	factory.getComic = function(URLParamsObject, callback) { factory.getByID('comics', id, callback) };
+
+	factory.getEvents = function(URLParamsObject, callback) { factory.getList('events', URLParamsObject, callback) };
+	factory.getEvent = function(id, callback) { factory.getByID('events', id, callback); };
 
 	return factory;
 });

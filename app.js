@@ -14,7 +14,10 @@ var app = angular.module('MarvelBrowser', ['ngRoute', 'ngAnimate']).config(funct
 	}).when('/character/:characterID', {
 		templateUrl: 'app/views/character.html',
 		controller:  'characterController'
-	}).when('/characters/in/:seriesName/:seriesID', {
+	}).when('/characters/in/series/:seriesName/:seriesID', {
+		templateUrl: 'app/views/filtered.html',
+		controller:  'charactersController'
+	}).when('/characters/in/event/:eventName/:eventID', {
 		templateUrl: 'app/views/filtered.html',
 		controller:  'charactersController'
 
@@ -34,6 +37,16 @@ var app = angular.module('MarvelBrowser', ['ngRoute', 'ngAnimate']).config(funct
 	}).when('/comics/from/:seriesName/:seriesID', {
 		templateUrl: 'app/views/filtered.html',
 		controller:  'comicsController'
+
+	}).when('/events', {
+		templateUrl: 'app/views/simpleListView.html',
+		controller:  'eventsController'
+	}).when('/event/:eventID', {
+		templateUrl: 'app/views/event.html',
+		controller:  'eventController'
+	}).when('/events/with/:characterName/:characterID', {
+		templateUrl: 'app/views/filtered.html',
+		controller:  'eventsController'
 
 	}).otherwise(
 	{

@@ -48,6 +48,26 @@ app.factory('parseDataFactory', function() {
 				});
 
 				break;
+
+			case 'events':
+				data.forEach(function(item){
+					if(item.start == item.end) {
+						var description = item.start.slice(0, 10);
+					}else{
+						var description = item.start.slice(0, 10) +' - ' + item.end.slice(0, 10);
+					}
+
+					var parsedItem =
+						{
+							id: item.id,
+							title: item.title,
+							image: item.thumbnail.path+'/landscape_amazing.'+item.thumbnail.extension,
+							description: description
+						};
+					parsedData.push(parsedItem);
+				});
+
+				break;
 		}
 
 		return parsedData;

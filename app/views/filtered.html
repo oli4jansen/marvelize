@@ -1,3 +1,5 @@
+<a class="left previous button" ng-if="backButton" ng-click="navigate(backButton.type+'/'+backButton.id)">Back to {{backButton.type}}</a>
+
 <h1 class="bigtitle center" ng-if="!filterResultsEmpty">{{filterTitle}}</h1>
 
 <h1 class="bigtitle center" ng-if="filterResultsEmpty">Nothing found.</h1>
