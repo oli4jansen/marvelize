@@ -26,6 +26,8 @@ app.controller("charactersController", function($scope, $routeParams, $location,
 
 		}
 
+		$scope.URLParamsObject.orderBy = 'modified';
+
 		APIDataFactory.getCharacters($scope.URLParamsObject, function(error, result) {
 			if(!error) {
 				console.log(result.results);

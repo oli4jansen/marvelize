@@ -26,6 +26,8 @@ app.controller("seriesController", function($scope, $location, $routeParams, API
 
 		}
 
+		$scope.URLParamsObject.orderBy = 'modified';
+
 		APIDataFactory.getSeries($scope.URLParamsObject, function(error, result) {
 			if(!error) {
 				console.log(result.results);
@@ -54,6 +56,7 @@ app.controller("seriesController", function($scope, $location, $routeParams, API
 
 	$scope.getMoreItemsPlease = function() {
 		$scope.URLParamsObject.offset = $scope.items.length;
+		$scope.URLParamsObject.orderBy = 'modified';
 
 		$scope.$apply(APIDataFactory.getSeries($scope.URLParamsObject, function(error, result) {
 			if(!error) {
