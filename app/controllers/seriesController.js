@@ -14,6 +14,16 @@ app.controller("seriesController", function($scope, $location, $routeParams, API
 				id: $routeParams.characterID
 			};
 
+		}else if($routeParams.eventName && $routeParams.eventID ) {
+
+			$scope.filterTitle = 'Series in which \''+$routeParams.eventName+'\' happened';
+			$scope.URLParamsObject.events = $routeParams.eventID;
+
+			$scope.backButton = {
+				type: 'event',
+				id: $routeParams.eventID
+			};
+
 		}
 
 		APIDataFactory.getSeries($scope.URLParamsObject, function(error, result) {
