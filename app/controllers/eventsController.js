@@ -12,6 +12,26 @@ app.controller("eventsController", function($scope, $location, $routeParams, API
 			id: $routeParams.characterID
 		};
 
+	}else if($routeParams.seriesName && $routeParams.seriesID ) {
+
+		$scope.filterTitle = 'Events that take place in \''+$routeParams.seriesName+'\'';
+		$scope.URLParamsObject.series = $routeParams.seriesID;
+
+		$scope.backButton = {
+			type: 'series',
+			id: $routeParams.seriesID
+		};
+
+	}else if($routeParams.comicName && $routeParams.comicID ) {
+
+		$scope.filterTitle = 'Events that take place in \''+$routeParams.comicName+'\'';
+		$scope.URLParamsObject.comics = $routeParams.comicID;
+
+		$scope.backButton = {
+			type: 'comic',
+			id: $routeParams.comicID
+		};
+
 	}
 	
 	$scope.init = function() {

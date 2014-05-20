@@ -1,4 +1,4 @@
-app.controller("eventController", function($scope, $rootScope, $sce, $routeParams, APIDataFactory, APIDataParser, APIErrorHandler){
+app.controller("comicController", function($scope, $rootScope, $sce, $routeParams, APIDataFactory, APIDataParser, APIErrorHandler){
 
 	$scope.itemID = $routeParams.ID;
 
@@ -9,7 +9,7 @@ app.controller("eventController", function($scope, $rootScope, $sce, $routeParam
 	$rootScope.coverActive = true;
 
 	$scope.init = function() {
-		APIDataFactory.getEvent($scope.itemID, function(error, result) {
+		APIDataFactory.getComic($scope.itemID, function(error, result) {
 			if(!error) {
 				$scope.itemData = result;
 				$scope.itemData.descriptionHTML = $sce.trustAsHtml(result.description);
@@ -19,15 +19,11 @@ app.controller("eventController", function($scope, $rootScope, $sce, $routeParam
 					{
 						name: 'characters',
 						itemsTitleKey: 'name',
-						allPath: 'characters/in/event/'+$scope.itemData.title+'/'+$scope.itemData.id
+						allPath: 'characters/in/comic/'+$scope.itemData.title+'/'+$scope.itemData.id
 					}, {
-						name: 'series',
+						name: 'events',
 						itemsTitleKey: 'name',
-						allPath: 'series/with/event/'+$scope.itemData.title+'/'+$scope.itemData.id
-					}, {
-						name: 'comics',
-						itemsTitleKey: 'name',
-						allPath: 'comics/with/event/'+$scope.itemData.title+'/'+$scope.itemData.id
+						allPath: 'events/in/comic/'+$scope.itemData.title+'/'+$scope.itemData.id
 					}]; // Array with keys from the data object to create lists for
 			}else{
 				APIErrorHandler.error(error);

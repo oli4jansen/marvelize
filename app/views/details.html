@@ -1,0 +1,22 @@
+<div class="image-view cover" ng-style="{backgroundImage: 'url('+itemData.image+')'}">
+	<h1 class="center"><span ng-if="!itemData.title && !itemData.name"><i class="ion-loading-d normal"></i></span>{{itemData.title||itemData.name}}</h1>
+</div>
+
+<div class="text-image-view medium" ng-if="itemData.description.length > 0">
+	<div class="half"><p ng-bind-html="itemData.descriptionHTML"></p></div><p class="half image" ng-switch on="descriptionIcon">
+		<i ng-switch-when="book" class="ion-ios7-bookmarks-outline huge center"></i>
+		<i ng-switch-when="person" class="ion-ios7-person-outline huge center"></i>
+	</p>
+</div>
+
+<div class="column-holder">
+	<div ng-repeat="list in lists" class="half">
+		<h1>{{itemData[list.name].available}} {{list.name}}</h1>
+
+		<p ng-if="itemData[list.name].available == 0">Marvel didn't provide details about {{list.name}}</p>
+
+		<h4 ng-repeat="item in itemData[list.name].items|limitTo:3" ng-class="{'border-bottom':!$last}" class="small-list-item">{{item[list.itemsTitleKey]}}</h4>
+
+		<a ng-click="navigate(list.allPath)" class="button next" ng-if="itemData[list.name].available > 0">All {{list.name}}</a>
+	</div>
+</div>

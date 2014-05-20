@@ -4,7 +4,7 @@ app.controller("charactersController", function($scope, $routeParams, $location,
 
 	$scope.init = function() {
 
-		if($routeParams.seriesName && $routeParams.seriesID ) {
+		if($routeParams.seriesName && $routeParams.seriesID ) { // Add a filter for /characters/in/series/
 
 			$scope.filterTitle = 'Characters in \''+$routeParams.seriesName+'\'';
 			$scope.URLParamsObject.series = $routeParams.seriesID;
@@ -14,7 +14,7 @@ app.controller("charactersController", function($scope, $routeParams, $location,
 				id: $routeParams.seriesID
 			};
 
-		}else if($routeParams.eventName && $routeParams.eventID ) {
+		}else if($routeParams.eventName && $routeParams.eventID ) {  // Add a filter for /characters/in/event/
 
 			$scope.filterTitle = 'Characters in \''+$routeParams.eventName+'\'';
 			$scope.URLParamsObject.events = $routeParams.eventID;
@@ -22,6 +22,16 @@ app.controller("charactersController", function($scope, $routeParams, $location,
 			$scope.backButton = {
 				type: 'event',
 				id: $routeParams.eventID
+			};
+
+		}else if($routeParams.comicName && $routeParams.comicID ) {  // Add a filter for /characters/in/comic/
+
+			$scope.filterTitle = 'Characters in \''+$routeParams.comicName+'\'';
+			$scope.URLParamsObject.comics = $routeParams.comicID;
+
+			$scope.backButton = {
+				type: 'comic',
+				id: $routeParams.comicID
 			};
 
 		}

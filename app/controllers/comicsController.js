@@ -8,6 +8,32 @@ app.controller("comicsController", function($scope, $routeParams, $location, API
 			$scope.filterTitle = 'Comics from \''+$routeParams.seriesName+'\'';
 			$scope.URLParamsObject.series = $routeParams.seriesID;
 			$scope.URLParamsObject.orderBy = 'onsaleDate';
+
+			$scope.backButton = {
+				type: 'series',
+				id: $routeParams.seriesID
+			};
+
+		}else if($routeParams.eventName && $routeParams.eventID ) {
+			$scope.filterTitle = 'Comics associated with \''+$routeParams.eventName+'\'';
+			$scope.URLParamsObject.events = $routeParams.eventID;
+			$scope.URLParamsObject.orderBy = 'onsaleDate';
+
+			$scope.backButton = {
+				type: 'event',
+				id: $routeParams.seriesID
+			};
+
+		}else if($routeParams.characterName && $routeParams.characterID ) {
+			$scope.filterTitle = 'Comics with \''+$routeParams.characterName+'\'';
+			$scope.URLParamsObject.characters = $routeParams.characterID;
+			$scope.URLParamsObject.orderBy = 'onsaleDate';
+
+			$scope.backButton = {
+				type: 'character',
+				id: $routeParams.seriesID
+			};
+
 		}
 
 		APIDataFactory.getComics($scope.URLParamsObject, function(error, result) {

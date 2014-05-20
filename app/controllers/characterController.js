@@ -1,24 +1,36 @@
-app.controller("characterController", function($scope, $rootScope, $sce, $routeParams, APIDataFactory, APIDataParser){
+app.controller("characterController", function($scope, $rootScope, $sce, $routeParams, APIDataFactory, APIDataParser, APIErrorHandler){
 
-	$scope.characterID = $routeParams.characterID;
-	$scope.characterData;
+	$scope.itemID = $routeParams.ID;
 
-	$scope.characterImage;
-
-	$scope.initialFormat = 'list';
-	$scope.tabs = [];
-	$scope.currentTab = '';
+	// Details.html needs:
+	$scope.itemData; // Data object
+	$scope.descriptionIcon = 'person'; // Description icon type
 
 	$rootScope.coverActive = true;
 
 	$scope.init = function() {
-		APIDataFactory.getCharacter($routeParams.characterID, function(error, result) {
+		APIDataFactory.getCharacter($scope.itemID, function(error, result) {
 			if(!error) {
-				$scope.characterData = result;
-				$scope.characterData.descriptionHTML = $sce.trustAsHtml(result.description);
-				$scope.characterImage = result.thumbnail.path+'/landscape_incredible.'+result.thumbnail.extension;
+				$scope.itemData = result;
+				$scope.itemData.descriptionHTML = $sce.trustAsHtml(result.description);
+				$scope.itemData.image = result.thumbnail.path+'/landscape_incredible.'+result.thumbnail.extension;
+
+				$scope.lists = [
+					{
+						name: 'series',
+						itemsTitleKey: 'name',
+						allPath: 'series/with/character/'+$scope.itemData.name+'/'+$scope.itemData.id
+					}, {
+						name: 'comics',
+						itemsTitleKey: 'name',
+						allPath: 'comics/with/character/'+$scope.itemData.name+'/'+$scope.itemData.id
+					}, {
+						name: 'events',
+						itemsTitleKey: 'name',
+						allPath: 'events/with/character/'+$scope.itemData.name+'/'+$scope.itemData.id
+					}]; // Array with keys from the data object to create lists for
 			}else{
-				alert('Error: '+JSON.stringify(error));
+				APIErrorHandler.error(error);
 			}
 		});
 	};

@@ -87,6 +87,12 @@ app.factory('APIDataFactory', function($http, $location, $route, $window, $sce, 
 			case 'series':
 				var fieldToQuery = 'titleStartsWith';
 				break;
+			case 'comics':
+				var fieldToQuery = 'titleStartsWith';
+				break;
+			case 'events':
+				var fieldToQuery = 'nameStartsWith';
+				break;
 			default:
 				var fieldToQuery = 'title';
 				break;
@@ -106,7 +112,7 @@ app.factory('APIDataFactory', function($http, $location, $route, $window, $sce, 
 	factory.getCharacter = function(id, callback) { factory.getByID('characters', id, callback); };
 
 	factory.getComics = function(URLParamsObject, callback) { factory.getList('comics', URLParamsObject, callback) };
-	factory.getComic = function(URLParamsObject, callback) { factory.getByID('comics', id, callback) };
+	factory.getComic = function(id, callback) { factory.getByID('comics', id, callback) };
 
 	factory.getEvents = function(URLParamsObject, callback) { factory.getList('events', URLParamsObject, callback) };
 	factory.getEvent = function(id, callback) { factory.getByID('events', id, callback); };

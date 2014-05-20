@@ -16,7 +16,7 @@ app.controller("seriesController", function($scope, $location, $routeParams, API
 
 		}else if($routeParams.eventName && $routeParams.eventID ) {
 
-			$scope.filterTitle = 'Series in which \''+$routeParams.eventName+'\' happened';
+			$scope.filterTitle = 'Series in which \''+$routeParams.eventName+'\' took place';
 			$scope.URLParamsObject.events = $routeParams.eventID;
 
 			$scope.backButton = {
