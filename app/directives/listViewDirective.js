@@ -6,7 +6,7 @@ app.directive('listView', function() {
       '</ul>';
 
   var subMenuBar = 
-    '<div class="sub-menu-bar" ng-if="items.length > 0">'+
+    '<div class="sub-menu-bar">'+
       '<span class="right">{{items.length}} of {{total}} items</span>'+
       '<a class="image-button" ng-click="viewAsGrid()" ng-class="{\'active\': format == \'grid\'}"><i class="ion-grid"></i></a>'+
       '<a class="image-button" ng-click="viewAsList()" ng-class="{\'active\': format == \'list\'}"><i class="ion-navicon"></i></a>'+

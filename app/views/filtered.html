@@ -1,8 +1,7 @@
 <h1 class="bigtitle center" ng-if="!filterResultsEmpty">{{filterTitle}}</h1>
 
 <h1 class="bigtitle center" ng-if="filterResultsEmpty">Nothing found.</h1>
-<br>
-<p class="center" ng-if="filterResultsEmpty" ng-bind-html="nothingFoundHint"></p>
-
 
 <list-view format="initialFormat" items="items" total="total" tabs="categoryList" current-tab="category"></list-view>
+
+<p class="center" ng-if="filterResultsEmpty" ng-bind-html="nothingFoundHint"></p>
