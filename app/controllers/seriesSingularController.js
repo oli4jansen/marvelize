@@ -1,4 +1,4 @@
-app.controller("seriesSingularController", function($scope, $rootScope, $sce, $routeParams, APIDataFactory, parseDataFactory){
+app.controller("seriesSingularController", function($scope, $rootScope, $sce, $routeParams, APIDataFactory, APIDataParser, APIErrorHandler){
 
 	$scope.seriesID = $routeParams.seriesID;
 	$scope.seriesData;
@@ -18,7 +18,7 @@ app.controller("seriesSingularController", function($scope, $rootScope, $sce, $r
 				$scope.seriesData.descriptionHTML = $sce.trustAsHtml(result.description);
 				$scope.seriesImage = result.thumbnail.path+'/landscape_incredible.'+result.thumbnail.extension;
 			}else{
-				alert('Error: '+JSON.stringify(error));
+				APIErrorHandler.error(error);
 			}
 		});
 	};

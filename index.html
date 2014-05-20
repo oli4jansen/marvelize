@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>marvelize</title>
+	<title>Marvelize</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<link rel="stylesheet" href="css/ionicons.min.css"/>
@@ -12,13 +12,13 @@
 <body ng-class="{'cover': coverActive}">
 	
 	<ul class="menu" ng-controller="menuController" ng-class="{'show': showMobileMenu}">
-		<li class="left desktop-only"><a ng-click="home()">marvelize</a></li>
-		<li><a ng-click="navigate('series')">series</a></li>
-		<li><a ng-click="navigate('characters')">characters</a></li>
-		<li class="search"><form ng-submit="search()"><input type="search" ng-model="query" placeholder="search.."></form></li>
+		<li class="left desktop-only"><a ng-click="home()">Marvelize</a></li>
+		<li><a ng-click="navigate('series')">Series</a></li>
+		<li><a ng-click="navigate('characters')">Characters</a></li>
+		<li class="search"><form ng-submit="search()"><input type="search" ng-model="query" placeholder="Search.."></form></li>
 	</ul>
 
-	<span class="mobile-only menu-toggle" ng-click="showMobileMenu = !showMobileMenu"><i class="ion-navicon medium" ng-class="{'white': showMobileMenu}"></i> <span ng-show="!showMobileMenu">marvelize</span></span>
+	<span class="mobile-only menu-toggle" ng-click="showMobileMenu = !showMobileMenu"><i class="ion-navicon medium" ng-class="{'white': showMobileMenu}"></i> <span ng-show="!showMobileMenu">Marvelize</span></span>
 
 	<div class="view-holder" ng-view ng-init="init()"></div>
 
@@ -46,7 +46,8 @@
 	<script type="text/javascript" src="app/controllers/eventController.js"></script>
 
 	<script type="text/javascript" src="app/factories/APIDataFactory.js"></script>
-	<script type="text/javascript" src="app/factories/parseDataFactory.js"></script>
+	<script type="text/javascript" src="app/factories/APIDataParser.js"></script>
+	<script type="text/javascript" src="app/factories/APIErrorHandler.js"></script>
 
 	<script type="text/javascript" src="app/directives/listViewDirective.js"></script>
 	<script type="text/javascript" src="app/directives/listItemDirective.js"></script>

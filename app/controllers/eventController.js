@@ -1,4 +1,4 @@
-app.controller("eventController", function($scope, $rootScope, $sce, $routeParams, APIDataFactory, parseDataFactory){
+app.controller("eventController", function($scope, $rootScope, $sce, $routeParams, APIDataFactory, APIDataParser){
 
 	$scope.eventID = $routeParams.eventID;
 	$scope.eventData;

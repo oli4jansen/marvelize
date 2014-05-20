@@ -1,4 +1,4 @@
-app.controller("searchController", function($scope, $location, $routeParams, $sce, APIDataFactory, parseDataFactory){
+app.controller("searchController", function($scope, $location, $routeParams, $sce, APIDataFactory, APIDataParser){
 
 	$scope.category = $routeParams.category;
 	$scope.categoryList = ['characters', 'series', 'comics'];
@@ -17,7 +17,7 @@ app.controller("searchController", function($scope, $location, $routeParams, $sc
 		APIDataFactory.search($scope.category, $routeParams.query, 0, function(error, result) {
 			if(!error) {
 
-				$scope.items = parseDataFactory.parse($scope.category, result.results);
+				$scope.items = APIDataParser.parse($scope.category, result.results);
 				$scope.total = result.total;
 
 				if(result.total === 0) {
@@ -58,7 +58,7 @@ app.controller("searchController", function($scope, $location, $routeParams, $sc
 	$scope.getMoreItemsPlease = function() {
 		$scope.$apply(APIDataFactory.search($scope.category, $scope.query, $scope.items.length, function(error, result) {
 			if(!error) {
-				$scope.items.push.apply($scope.items, parseDataFactory.parse($scope.category, result.results));
+				$scope.items.push.apply($scope.items, APIDataParser.parse($scope.category, result.results));
 				$scope.total = result.total;
 			}else{
 				alert('Error: '+JSON.stringify(error));

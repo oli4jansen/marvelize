@@ -1,4 +1,4 @@
-app.controller("seriesController", function($scope, $location, $routeParams, APIDataFactory, parseDataFactory){
+app.controller("seriesController", function($scope, $location, $routeParams, APIDataFactory, APIDataParser, APIErrorHandler){
 
 	$scope.URLParamsObject = {};
 
@@ -31,10 +31,10 @@ app.controller("seriesController", function($scope, $location, $routeParams, API
 		APIDataFactory.getSeries($scope.URLParamsObject, function(error, result) {
 			if(!error) {
 				console.log(result.results);
-				$scope.items = parseDataFactory.parse('series', result.results);
+				$scope.items = APIDataParser.parse('series', result.results);
 				$scope.total = result.total;
 			}else{
-				alert('Error: '+JSON.stringify(error));
+				APIErrorHandler.error(error);
 			}
 		});
 	};
@@ -60,7 +60,7 @@ app.controller("seriesController", function($scope, $location, $routeParams, API
 
 		$scope.$apply(APIDataFactory.getSeries($scope.URLParamsObject, function(error, result) {
 			if(!error) {
-				$scope.items.push.apply($scope.items, parseDataFactory.parse('series', result.results));
+				$scope.items.push.apply($scope.items, APIDataParser.parse('series', result.results));
 				$scope.total = result.total;
 			}else{
 				alert('Error: '+JSON.stringify(error));

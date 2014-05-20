@@ -1,4 +1,4 @@
-app.controller("comicsController", function($scope, $routeParams, $location, APIDataFactory, parseDataFactory){
+app.controller("comicsController", function($scope, $routeParams, $location, APIDataFactory, APIDataParser){
 
 	$scope.URLParamsObject = {};
 
@@ -12,7 +12,7 @@ app.controller("comicsController", function($scope, $routeParams, $location, API
 
 		APIDataFactory.getComics($scope.URLParamsObject, function(error, result) {
 			if(!error) {
-				$scope.items = parseDataFactory.parse('comics', result.results);
+				$scope.items = APIDataParser.parse('comics', result.results);
 				$scope.total = result.total;
 			}else{
 				alert('Error: '+JSON.stringify(error));
@@ -40,7 +40,7 @@ app.controller("comicsController", function($scope, $routeParams, $location, API
 
 		$scope.$apply(APIDataFactory.getComics($scope.URLParamsObject, function(error, result) {
 			if(!error) {
-				$scope.items.push.apply($scope.items, parseDataFactory.parse('comics', result.results));
+				$scope.items.push.apply($scope.items, APIDataParser.parse('comics', result.results));
 				$scope.total = result.total;
 			}else{
 				alert('Error: '+JSON.stringify(error));

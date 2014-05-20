@@ -1,4 +1,4 @@
-app.controller("characterController", function($scope, $rootScope, $sce, $routeParams, APIDataFactory, parseDataFactory){
+app.controller("characterController", function($scope, $rootScope, $sce, $routeParams, APIDataFactory, APIDataParser){
 
 	$scope.characterID = $routeParams.characterID;
 	$scope.characterData;

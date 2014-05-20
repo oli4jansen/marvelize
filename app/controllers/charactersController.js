@@ -1,4 +1,4 @@
-app.controller("charactersController", function($scope, $routeParams, $location, APIDataFactory, parseDataFactory){
+app.controller("charactersController", function($scope, $routeParams, $location, APIDataFactory, APIDataParser, APIErrorHandler){
 
 	$scope.URLParamsObject = {};
 
@@ -31,7 +31,7 @@ app.controller("charactersController", function($scope, $routeParams, $location,
 		APIDataFactory.getCharacters($scope.URLParamsObject, function(error, result) {
 			if(!error) {
 				console.log(result.results);
-				$scope.items = parseDataFactory.parse('characters', result.results);
+				$scope.items = APIDataParser.parse('characters', result.results);
 				$scope.total = result.total;
 			}else{
 				alert('Error: '+JSON.stringify(error));
@@ -59,7 +59,7 @@ app.controller("charactersController", function($scope, $routeParams, $location,
 
 		$scope.$apply(APIDataFactory.getCharacters($scope.URLParamsObject, function(error, result) {
 			if(!error) {
-				$scope.items.push.apply($scope.items, parseDataFactory.parse('characters', result.results));
+				$scope.items.push.apply($scope.items, APIDataParser.parse('characters', result.results));
 				$scope.total = result.total;
 			}else{
 				alert('Error: '+JSON.stringify(error));

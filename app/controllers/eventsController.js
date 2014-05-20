@@ -1,4 +1,4 @@
-app.controller("eventsController", function($scope, $location, $routeParams, APIDataFactory, parseDataFactory){
+app.controller("eventsController", function($scope, $location, $routeParams, APIDataFactory, APIDataParser){
 
 	$scope.URLParamsObject = {};
 
@@ -25,7 +25,7 @@ app.controller("eventsController", function($scope, $location, $routeParams, API
 		APIDataFactory.getEvents($scope.URLParamsObject, function(error, result) {
 			if(!error) {
 				console.log(result.results);
-				$scope.items = parseDataFactory.parse('events', result.results);
+				$scope.items = APIDataParser.parse('events', result.results);
 				$scope.total = result.total;
 			}else{
 				alert('Error: '+JSON.stringify(error));
@@ -54,7 +54,7 @@ app.controller("eventsController", function($scope, $location, $routeParams, API
 
 		$scope.$apply(APIDataFactory.getEvents($scope.URLParamsObject, function(error, result) {
 			if(!error) {
-				$scope.items.push.apply($scope.items, parseDataFactory.parse('events', result.results));
+				$scope.items.push.apply($scope.items, APIDataParser.parse('events', result.results));
 				$scope.total = result.total;
 			}else{
 				alert('Error: '+JSON.stringify(error));

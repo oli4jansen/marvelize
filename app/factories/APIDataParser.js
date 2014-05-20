@@ -1,4 +1,4 @@
-app.factory('parseDataFactory', function() {
+app.factory('APIDataParser', function() {
 
 	var factory = {};
 

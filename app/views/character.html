@@ -1,5 +1,5 @@
 <div class="image-view cover" ng-style="{backgroundImage: 'url('+characterImage+')'}">
-	<h1 class="center">{{characterData.name}}</h1>
+	<h1 class="center"><span ng-if="!characterData.name"><i class="ion-loading-d normal"></i></span>{{characterData.name}}</h1>
 </div>
 
 <div class="text-image-view medium" ng-if="characterData.description.length > 0">
