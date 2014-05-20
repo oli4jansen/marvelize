@@ -1,4 +1,4 @@
-var app = angular.module('MarvelBrowser', ['ngRoute', 'ngAnimate']).config(function($routeProvider) {
+var app = angular.module('marvelize', ['ngRoute', 'ngAnimate']).config(function($routeProvider) {
 
 	$routeProvider.when('/', {
 		templateUrl: 'app/views/index.html',
@@ -64,4 +64,4 @@ var app = angular.module('MarvelBrowser', ['ngRoute', 'ngAnimate']).config(funct
  });
 
 
-angular.bootstrap(document.getElementById("document"), ['MarvelBrowser']);
+angular.bootstrap(document.getElementById("document"), ['marvelize']);
