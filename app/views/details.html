@@ -2,6 +2,11 @@
 	<h1 class="center"><span ng-if="!itemData.title && !itemData.name"><i class="ion-loading-d normal"></i></span>{{itemData.title||itemData.name}}</h1>
 </div>
 
+<div class="parent-button-holder" ng-if="category == 'comics'">
+	<a class="next button" ng-click="navigate('series/'+seriesID)">Go to series</a>
+	This comic is part of the '{{itemData.series.name}}' series
+</div>
+
 <div class="text-image-view medium" ng-if="itemData.description.length > 0">
 	<div class="half"><p ng-bind-html="itemData.descriptionHTML"></p></div><p class="half image" ng-switch on="descriptionIcon">
 		<i ng-switch-when="book" class="ion-ios7-bookmarks-outline huge center"></i>
@@ -15,7 +20,7 @@
 
 		<p ng-if="itemData[list.name].available == 0">Marvel didn't provide details about {{list.name}}</p>
 
-		<h4 ng-repeat="item in itemData[list.name].items|limitTo:3" ng-class="{'border-bottom':!$last}" class="small-list-item">{{item[list.itemsTitleKey]}}</h4>
+		<h4 ng-repeat="item in itemData[list.name].items|limitTo:3" ng-class="{'border-bottom':!$last}" class="small-list-item">{{item.name}}</h4>
 
 		<a ng-click="navigate(list.allPath)" class="button next" ng-if="itemData[list.name].available > 0">All {{list.name}}</a>
 	</div>

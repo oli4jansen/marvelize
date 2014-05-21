@@ -105,10 +105,5 @@ app.factory('APIDataFactory', function($http, $location, $route, $window, $sce, 
 		factory.getList(category, URLParamsObject, callback);
 	};
 
-	factory.getSeries = function(id, callback) { factory.getByID('series', id, callback); };
-	factory.getCharacter = function(id, callback) { factory.getByID('characters', id, callback); };
-	factory.getComic = function(id, callback) { factory.getByID('comics', id, callback) };
-	factory.getEvent = function(id, callback) { factory.getByID('events', id, callback); };
-
 	return factory;
 });

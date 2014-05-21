@@ -392,6 +392,16 @@ list-item:last-child .list-item-list { border-bottom: 0; }
 		font-size: 15px;
 	}
 
+.parent-button-holder {
+	padding: 10px 0;
+	margin-top: 15px;
+	line-height: 35px;
+}
+.parent-button-holder .button {
+	margin: 0px;
+	float: right;
+}
+
 .copyright {
 	opacity: .25;
 	padding: 25px 0;

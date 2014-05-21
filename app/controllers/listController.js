@@ -32,7 +32,7 @@ app.controller("listController", function($scope, $routeParams, $location, $sce,
 			
 			// Set up a back button to the associationWith item
 			$scope.backButton = {
-				type: $routeParams.associationWith,
+				type: associationWith,
 				id: $routeParams.ID
 			};
 
@@ -93,10 +93,7 @@ app.controller("listController", function($scope, $routeParams, $location, $sce,
 
 	// Function called by the ListView when a ListViewItem is clicked
 	$scope.navigateToItem = function(itemID) {
-		var categorySingular = $scope.category;
-		if(categorySingular !== 'series') categorySingular = categorySingular.slice(0, categorySingular.length-1);
-
-		$location.path('/'+categorySingular+'/'+itemID);
+		$location.path('/'+$scope.category+'/'+itemID);
 	};
 
 	$scope.getMoreItemsPlease = function() {
