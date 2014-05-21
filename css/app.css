@@ -85,9 +85,16 @@ i.huge {   font-size: 150px; }
 	color: white;
 	background-color: #F0141E;
 }
-	.button.next {
-		padding-right: 15px;
+	.button.white {
+		color: white;
+		border-color: white;
 	}
+	.button.white:hover {
+		color: #F0141E;
+		background-color: white;
+	}
+
+	.button.next { padding-right: 15px; }
 	.button.next:after {
 		font-size: 14px;
 		content: "\f154";
@@ -97,9 +104,7 @@ i.huge {   font-size: 150px; }
 		line-height: 22px;
 	}
 
-	.button.previous {
-		padding-left: 15px;
-	}
+	.button.previous { padding-left: 15px; }
 	.button.previous:before {
 		font-size: 14px;
 		content: "\f153";
@@ -394,8 +399,9 @@ list-item:last-child .list-item-list { border-bottom: 0; }
 
 .parent-button-holder {
 	padding: 10px 0;
-	margin-top: 15px;
+	margin-top: -65px;
 	line-height: 35px;
+	color: white;
 }
 .parent-button-holder .button {
 	margin: 0px;
