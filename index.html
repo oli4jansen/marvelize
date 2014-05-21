@@ -13,8 +13,7 @@
 	
 	<ul class="menu" ng-controller="menuController" ng-class="{'show': showMobileMenu}">
 		<li class="left desktop-only"><a ng-click="home()">Marvelize</a></li>
-		<li><a ng-click="navigate('series')">Series</a></li>
-		<li><a ng-click="navigate('characters')">Characters</a></li>
+		<li><a ng-click="navigate('characters')">Browse</a></li>
 		<li class="search"><form ng-submit="search()"><input type="search" ng-model="query" placeholder="Search.."></form></li>
 	</ul>
 
@@ -32,18 +31,11 @@
 
 	<script type="text/javascript" src="app/controllers/menuController.js"></script>
 	<script type="text/javascript" src="app/controllers/indexController.js"></script>
-	<script type="text/javascript" src="app/controllers/searchController.js"></script>
+	<script type="text/javascript" src="app/controllers/listController.js"></script>
 	
-	<script type="text/javascript" src="app/controllers/charactersController.js"></script>
 	<script type="text/javascript" src="app/controllers/characterController.js"></script>
-
 	<script type="text/javascript" src="app/controllers/seriesController.js"></script>
-	<script type="text/javascript" src="app/controllers/seriesSingularController.js"></script>
-
-	<script type="text/javascript" src="app/controllers/comicsController.js"></script>
 	<script type="text/javascript" src="app/controllers/comicController.js"></script>
-
-	<script type="text/javascript" src="app/controllers/eventsController.js"></script>
 	<script type="text/javascript" src="app/controllers/eventController.js"></script>
 
 	<script type="text/javascript" src="app/factories/APIDataFactory.js"></script>

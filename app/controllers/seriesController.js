@@ -1,71 +1,38 @@
-app.controller("seriesController", function($scope, $location, $routeParams, APIDataFactory, APIDataParser, APIErrorHandler){
+app.controller("seriesController", function($scope, $rootScope, $sce, $routeParams, APIDataFactory, APIDataParser, APIErrorHandler){
 
-	$scope.URLParamsObject = {};
+	$scope.itemID = $routeParams.ID;
+
+	// Details.html needs:
+	$scope.itemData; // Data object
+	$scope.descriptionIcon = 'book'; // Description icon type
+
+	$rootScope.coverActive = true;
 
 	$scope.init = function() {
-
-		if($routeParams.characterName && $routeParams.characterID ) {
-
-			$scope.filterTitle = 'Series with \''+$routeParams.characterName+'\'';
-			$scope.URLParamsObject.characters = $routeParams.characterID;
-
-			$scope.backButton = {
-				type: 'character',
-				id: $routeParams.characterID
-			};
-
-		}else if($routeParams.eventName && $routeParams.eventID ) {
-
-			$scope.filterTitle = 'Series in which \''+$routeParams.eventName+'\' took place';
-			$scope.URLParamsObject.events = $routeParams.eventID;
-
-			$scope.backButton = {
-				type: 'event',
-				id: $routeParams.eventID
-			};
-
-		}
-
-		$scope.URLParamsObject.orderBy = 'modified';
-
-		APIDataFactory.getSeries($scope.URLParamsObject, function(error, result) {
+		APIDataFactory.getSeries($scope.itemID, function(error, result) {
 			if(!error) {
-				console.log(result.results);
-				$scope.items = APIDataParser.parse('series', result.results);
-				$scope.total = result.total;
+				$scope.itemData = result;
+				$scope.itemData.descriptionHTML = $sce.trustAsHtml(result.description);
+				$scope.itemData.image = result.thumbnail.path+'/landscape_incredible.'+result.thumbnail.extension;
+
+				$scope.lists = [
+					{
+						name: 'characters',
+						itemsTitleKey: 'name',
+						allPath: 'characters/in/series/'+$scope.itemData.title+'/'+$scope.itemData.id
+					}, {
+						name: 'comics',
+						itemsTitleKey: 'name',
+						allPath: 'comics/in/series/'+$scope.itemData.title+'/'+$scope.itemData.id
+					}, {
+						name: 'events',
+						itemsTitleKey: 'name',
+						allPath: 'events/in/series/'+$scope.itemData.title+'/'+$scope.itemData.id
+					}]; // Array with keys from the data object to create lists for
 			}else{
 				APIErrorHandler.error(error);
 			}
 		});
 	};
-
-	/*
-		Functions and vars that need to be implented for our ListView
-	*/
-
-	$scope.initialFormat = 'grid';
-	$scope.items = [];
-	$scope.tabs = [];
-	$scope.currentTab = '';
-	$scope.total = 0;
-
-	// Function called by the ListView when a ListViewItem is clicked
-	$scope.navigateToItem = function(seriesId) {
-		$location.path('/series/'+seriesId);
-	}
-
-	$scope.getMoreItemsPlease = function() {
-		$scope.URLParamsObject.offset = $scope.items.length;
-		$scope.URLParamsObject.orderBy = 'modified';
-
-		$scope.$apply(APIDataFactory.getSeries($scope.URLParamsObject, function(error, result) {
-			if(!error) {
-				$scope.items.push.apply($scope.items, APIDataParser.parse('series', result.results));
-				$scope.total = result.total;
-			}else{
-				alert('Error: '+JSON.stringify(error));
-			}
-		}));
-	}
 
 });
