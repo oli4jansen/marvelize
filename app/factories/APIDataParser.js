@@ -13,7 +13,8 @@ app.factory('APIDataParser', function() {
 						{
 							id: item.id,
 							title: item.name,
-							description: item.comics.available+' comics available.'
+							description: item.comics.available+' comics available.',
+							image = ''
 						};
 					if(item.thumbnail && item.thumbnail.path && item.thumbnail.extension) parsedItem.image = item.thumbnail.path+'/landscape_amazing.'+item.thumbnail.extension;
 
