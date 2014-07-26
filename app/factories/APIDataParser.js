@@ -13,9 +13,10 @@ app.factory('APIDataParser', function() {
 						{
 							id: item.id,
 							title: item.name,
-							image: item.thumbnail.path+'/landscape_amazing.'+item.thumbnail.extension,
 							description: item.comics.available+' comics available.'
 						};
+					if(item.thumbnail && item.thumbnail.path && item.thumbnail.extension) parsedItem.image = item.thumbnail.path+'/landscape_amazing.'+item.thumbnail.extension;
+
 					parsedData.push(parsedItem);
 				});
 
